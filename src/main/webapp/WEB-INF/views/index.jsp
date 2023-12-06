@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<script  type="text/javascript"  charset="utf-8">  
+</script>
+</head>
+<body>
+	<table id="siteLoginArea">
+		<tr>
+			<td>
+				<c:choose>
+					<c:when test="${sessionScope.loginMember.m_id == null }">
+						<a href="member.login.go">
+							로그인
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a id="logoutBtn" href="member.logout">
+							로그아웃
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
+	<table id="siteSignupArea">
+		<tr>
+			<td>
+				<c:choose>
+				<c:when test="${sessionScope.loginMember.m_id == null }">
+					<a href="member.signup.go">
+						회원가입
+					</a>
+				</c:when>
+					<c:otherwise>
+						<a href="member.info.go">
+							회원정보
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
+	
+	${r }
+	
+	<table id="siteContextArea">
+		<tr>
+			<td align="center">
+				<jsp:include page="${cp }"/>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
