@@ -10,22 +10,17 @@
 	<form action="member.login" method="post">
 		<table id="loginTbl">
 			<tr>
-				<td align="center">
-					로그인
+				<td>
+					<input name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus"> 
 				</td>
 			</tr>
 			<tr>
-				<td align="center">
-					<input name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" maxlength="10" class="i1"> 
+				<td>
+					<input name="m_pw" placeholder="Password" autocomplete="off" type="password">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">
-					<input name="m_pw" placeholder="Password" autocomplete="off" maxlength="10" type="password" class="i1">
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
+				<td>
 					<button>로그인</button>
 				</td>
 			</tr>

@@ -1,7 +1,6 @@
 package com.team.dec051.member;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MemberContoller {
 
 	@Autowired
-	private MemberDAO mDAO;
+	private MemberDAO mDAO;	
+	@Autowired
+	private MailSendService mailService;
 	
+	//이메일 인증
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		return mailService.joinEmail(email);
+	}
 	
 	@RequestMapping(value = "/member.login.go", method = RequestMethod.GET)
 	public String goMemberLogin(HttpServletRequest req) {
@@ -35,11 +44,6 @@ public class MemberContoller {
 		return "index";
 	}
 
-	@RequestMapping(value = "/emailCheck", method = RequestMethod.GET)
-	public void checkEmail(String m_email, HttpServletRequest req) {
-		mDAO.joinEmail(m_email);
-	}
-	
 	@RequestMapping(value = "/member.id.check", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
 	public @ResponseBody Members memberIdCheck(Member m) {
 		return mDAO.memberIdCheck(m);

@@ -8,6 +8,7 @@
 <title>Index</title>
 <script  type="text/javascript"  charset="utf-8">  
 </script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
 </head>
 <body>
 	<table id="siteLoginArea">
@@ -15,7 +16,7 @@
 			<td>
 				<c:choose>
 					<c:when test="${sessionScope.loginMember.m_id == null }">
-						<a href="member.login.go">
+						<a id="loginBtn" href="member.login.go">
 							로그인
 						</a>
 					</c:when>
@@ -33,12 +34,12 @@
 			<td>
 				<c:choose>
 				<c:when test="${sessionScope.loginMember.m_id == null }">
-					<a href="member.signup.go">
+					<a id="signBtn" href="member.signup.go">
 						회원가입
 					</a>
 				</c:when>
 					<c:otherwise>
-						<a href="member.info.go">
+						<a id="infoBtn" href="member.info.go">
 							회원정보
 						</a>
 					</c:otherwise>

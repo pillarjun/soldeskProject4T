@@ -1,48 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Signup</title>
 <script type="text/javascript">
-	$(function() {
-		asdf();
-	});
-	
-	function asdf() {
-		$("button").click(function() {
-			let idd = $("#signup_m_id").val();
-			if (idd == "") {
-				alert("아이디를 입력해주세요.");
-				return false;
-			}
-			return true;
-		});
-	}
-	
+
+function emailCheck() {
 	$('#mailCheckBtn').click(function() {
-		const email = $('#m_email').val();
-		console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
-		const checkInput = $('.mailCheckInput') // 인증번호 입력하는곳 
-		
+		const email = $('#userEmail1').val() + $('#userEmail2').val(); 
+		console.log('완성된 이메일 : ' + email);
+		const checkInput = $('.mailCheckInput') 
+		$('input[name=m_email]').attr('value', email)
 		$.ajax({
 			type : 'get',
-			url : '<c:url value ="/user/mailCheck?email="/>'+email,
+			url : '<c:url value ="/mailCheck?email="/>' + email, 
 			success : function (data) {
 				console.log("data : " +  data);
 				checkInput.attr('disabled',false);
 				code =data;
 				alert('인증번호가 전송되었습니다.')
-			}			
+			}
 		});
 	});
+}
+
+function qwer() {
 	$('.mailCheckInput').blur(function () {
 		const inputCode = $(this).val();
-		const $resultMsg = $('#mailCheckWarn');
+		const $resultMsg = $('#mailCheckMessage');
 		
 		if(inputCode === code){
-			$resultMsg.html('인증번호 확인');
+			$resultMsg.html('인증번호 일치');
 			$resultMsg.css('color','green');
 			$('#mailCheckBtn').attr('disabled',true);
 			$('#userEamil1').attr('readonly',true);
@@ -54,7 +46,7 @@
 			$resultMsg.css('color','red');
 		}
 	});
-	
+}
 </script>
 </head>
 <body>
@@ -62,7 +54,7 @@
 		<table id="signupTbl">
 			<tr>
 				<td colspan="2">
-					<input id="signup_m_id" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" maxlength="10" class="i1">
+					<input id="signupId" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" maxlength="10" class="i1">
 					<div id="msg"></div>
 				</td>
 			</tr>
@@ -81,26 +73,27 @@
 					<input name="m_name" placeholder="User Name" autocomplete="off" class="i1">
 				</td>
 			</tr>
-			
 			<tr>
 				<td>
-					<input name="m_email" placeholder="Email" autocomplete="off" class="i1">
-					<a href="emailCheck?m_email=rabbitstree@naver.com" id="mailCheckBtn">인증번호 발송</a>
-				</td>
-				<td>
-					<div class="mailCheckBox">
-						<input class="formControl_mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
-					</div>
-						<span id="mailCheckWarn"></span>
+					<input type="text" name="userEmail1" id="userEmail1" placeholder="이메일" >
+					<select name="userEmail2" id="userEmail2" >
+						<option>@naver.com</option>
+						<option>@daum.net</option>
+						<option>@gmail.com</option>
+						<option>@hanmail.com</option>
+					</select>
+					<input type="hidden" name="m_email" value="">
+					<button type="button" id="mailCheckBtn" onclick="emailCheck();">본인인증</button>
+					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" onblur="qwer();" disabled="disabled" maxlength="6">
+					<span id="mailCheckMessage"></span>
 				</td>
 			</tr>
 			<tr>
-			
 				<td>
 					<div class="fileBox">
 						<input class="uploadName" value="Profile Pic" placeholder="Profile Pic">
 						<label for="m_photo">파일찾기</label>					
-						<input id="m_photo" name="m_photo" type="file">
+						<input id="uploadPhoto" name="m_photo" type="file">
 					</div>
 				</td>
 			</tr>
