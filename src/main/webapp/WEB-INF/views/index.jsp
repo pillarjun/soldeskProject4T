@@ -14,6 +14,13 @@
 	<table id="siteLoginArea">
 		<tr>
 			<td>
+				<a id="noticeBtn" href="noticeBoard.go">
+					문의
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				<c:choose>
 					<c:when test="${sessionScope.loginMember.m_id == null }">
 						<a id="loginBtn" href="member.login.go">

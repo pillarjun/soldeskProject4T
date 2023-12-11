@@ -46,6 +46,11 @@
 			</tr>
 			<tr>
 				<td colspan="2">
+					<img src="resources/img/${sessionScope.loginMember.m_photo }">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
 					<button id="updateMemberBtn">계정 수정</button>
 			</form>
 			<form  action="member.resign">

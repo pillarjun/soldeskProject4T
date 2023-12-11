@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Signup</title>
 <script type="text/javascript">
-
 function emailCheck() {
 	$('#mailCheckBtn').click(function() {
 		const email = $('#userEmail1').val() + $('#userEmail2').val(); 
@@ -37,10 +36,11 @@ function qwer() {
 			$resultMsg.html('인증번호 일치');
 			$resultMsg.css('color','green');
 			$('#mailCheckBtn').attr('disabled',true);
-			$('#userEamil1').attr('readonly',true);
-			$('#userEamil2').attr('readonly',true);
+			$('#userEmail1').attr('readonly',true);
+			$('#userEmail2').attr('readonly',true);
 			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-	         $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+	        $('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+			$('#signCheckBtn').attr('disabled',false);
 		}else{
 			$resultMsg.html('인증번호 불일치');
 			$resultMsg.css('color','red');
@@ -75,7 +75,7 @@ function qwer() {
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="userEmail1" id="userEmail1" placeholder="이메일" >
+					<input type="text" name="userEmail1" id="userEmail1" placeholder="Email" >
 					<select name="userEmail2" id="userEmail2" >
 						<option>@naver.com</option>
 						<option>@daum.net</option>
@@ -99,7 +99,7 @@ function qwer() {
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-					<button>Sign Up</button>
+					<button id="signCheckBtn" disabled="disabled">Sign Up</button>
 				</td>
 			</tr>
 		</table>

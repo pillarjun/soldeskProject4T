@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dec051.notice.BoardMapper">
+
+	<resultMap type="com.team.dec051.notice.Board" id="Board">
+  		<result column="nb_no" property="nb_no"/>
+  		<result column="nb_id" property="nb_id"/>
+  		<result column="nb_pw" property="nb_pw"/>
+  		<result column="nb_title" property="nb_title"/>
+  		<result column="nb_content" property="nb_content"/>		
+  		<result column="nb_when" property="nb_when"/>		
+  		<result column="nb_count" property="nb_count"/>			
+  		<result column="nb_replycount" property="nb_replycount"/>			
+  	 	<collection property="pagingvo" resultMap="PagingVO"/>
+	</resultMap>
+	<resultMap type="com.team.dec051.notice.PagingVO" id="PagingVO">
+  		<result column="start" property="start"/>
+   		<result column="end" property="end"/>
+	</resultMap>
+	
+	
+	<select id="countBoard" resultType="int">
+ 		select count(nb_no) from noticeboard
+	</select>
+	
+	<select id="getAllBoard" resultMap="Board">
+		select *	from (select rownum rn, a.* from (select * 
+		from noticeboard order by nb_no desc) a)
+		where rn between #{start} and #{end}
+	</select>
+
+	<insert id="insertBoard" parameterType="com.team.dec051.notice.Board">
+		insert into noticeboard values (noticeboard_seq.nextval, 
+		#{nb_id}, #{nb_pw}, #{nb_title}, #{nb_content}, to_char(sysdate,'yy.mm.dd hh24:mi'), 0, 0)	
+	</insert>
+
+	<select id="getOneBoard" resultType="com.team.dec051.notice.Board"
+	parameterType="com.team.dec051.notice.Board">
+		select * from noticeboard where nb_no = #{nb_no}
+	</select>
+
+	<delete id="deleteBoard"  parameterType="com.team.dec051.notice.Board">
+		delete from noticeboard where nb_no = #{nb_no}
+	</delete>
+
+	<update id="updateBoard"  parameterType="com.team.dec051.notice.Board">
+		update noticeboard set nb_title = #{nb_title}, nb_content = #{nb_content}
+		, nb_when = to_char(sysdate,'yy.mm.dd hh24:mi')
+		where nb_no = #{nb_no}
+	</update>
+
+	<select id="getXmlBoard" resultType="com.team.dec051.notice.Board"
+	parameterType="com.team.dec051.notice.Board">
+		select nb_no, nb_id, nb_title, nb_content, nb_when, nb_count from noticeboard order by nb_no 
+	</select>
+	
+	<select id="countSearchBoard" resultType="int">
+ 		select count (nb_no) from noticeboard where ${searchType} like '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="searchBoard" resultMap="Board">
+		select *	from (select rownum rn, a.* from (select * 
+		from noticeboard
+		where ${searchType} like '%'||#{keyword}||'%' 
+		order by nb_no desc) a)
+		where rn between #{start} and #{end}
+	</select>
+
+	<update id="updateViewCnt" parameterType="com.team.dec051.notice.Board">
+		update noticeboard set nb_count = nb_count +1
+		where nb_no = #{nb_no}
+	</update>
+	
+	<update id="updateReplyCnt" parameterType="com.team.dec051.notice.Board">
+		update noticeboard set nb_replycount = 
+		(select count(r_no) from noticereplyboard where noticereplyboard.nb_no = #{nb_no})
+		where nb_no = #{nb_no}
+	</update>
+	
+</mapper>
+
+
