@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<img src="resources/img/${sessionScope.loginMember.m_photo }">
+					<img width="100px" src="resources/img/${sessionScope.loginMember.m_photo }">
 				</td>
 			</tr>
 			<tr>
