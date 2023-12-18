@@ -57,6 +57,13 @@
 	
 	${r }
 	
+	<table id="siteLibraryArea">
+		<tr>
+			<td>
+				<a href="libraryfirst.go">유튜브 도우미</a>
+			</td>
+		</tr>
+	</table>
 	<table id="siteContextArea">
 		<tr>
 			<td align="center">
