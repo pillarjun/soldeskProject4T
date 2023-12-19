@@ -4,7 +4,8 @@ create table site_member(
 	m_pw varchar2(10 char) not null,
 	m_name varchar2(10 char) not null,
 	m_email varchar2(80 char) not null,
-	m_photo varchar2(200 char) not null
+	m_photo varchar2(200 char) not null,
+	m_folder varchar(50 char) not null
 );
 
 select * from site_member;
