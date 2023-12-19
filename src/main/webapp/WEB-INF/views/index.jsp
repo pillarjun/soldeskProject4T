@@ -14,6 +14,13 @@
 	<table id="siteLoginArea">
 		<tr>
 			<td>
+				<a id="timelineBtn" href="timeline.go">
+					영상 분석
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				<a id="noticeBtn" href="noticeBoard.go">
 					문의
 				</a>
