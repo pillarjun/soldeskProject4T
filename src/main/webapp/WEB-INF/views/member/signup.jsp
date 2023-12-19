@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Signup</title>
 <script type="text/javascript">
-function emailCheck() {
+$(function() {
 	$('#mailCheckBtn').click(function() {
 		const email = $('#userEmail1').val() + $('#userEmail2').val(); 
 		console.log('완성된 이메일 : ' + email);
@@ -25,9 +25,8 @@ function emailCheck() {
 			}
 		});
 	});
-}
-
-function qwer() {
+});
+$(function() {
 	$('.mailCheckInput').blur(function () {
 		const inputCode = $(this).val();
 		const $resultMsg = $('#mailCheckMessage');
@@ -46,7 +45,7 @@ function qwer() {
 			$resultMsg.css('color','red');
 		}
 	});
-}
+});
 </script>
 </head>
 <body>
@@ -83,8 +82,8 @@ function qwer() {
 						<option>@hanmail.com</option>
 					</select>
 					<input type="hidden" name="m_email" value="">
-					<button type="button" id="mailCheckBtn" onclick="emailCheck();">본인인증</button>
-					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" onblur="qwer();" disabled="disabled" maxlength="6">
+					<button type="button" id="mailCheckBtn">본인인증</button>
+					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 					<span id="mailCheckMessage"></span>
 				</td>
 			</tr>
