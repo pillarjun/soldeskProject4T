@@ -18,7 +18,7 @@ public class ReplyController {
 	private ReplyDAO rDAO;
 	
 	// 댓글 등록 후 oneview 로 이동 
-	@RequestMapping(value = "/reply.insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/reply.insert", method = RequestMethod.POST)
 	public String insertReply(Reply r, HttpServletRequest req) {
 		rDAO.insertReply(r, req);
 		bDAO.updateReplyCnt(r.getNb_no(), req);
@@ -26,7 +26,7 @@ public class ReplyController {
 	}
 	
 	// 댓글 삭제 후 oneview 로 이동
-	@RequestMapping(value = "/reply.delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/reply.delete", method = RequestMethod.POST)
 	public String deleteReply(String nb_no, String r_no, HttpServletRequest req) {
 		int inb_no = Integer.parseInt(nb_no);
 		int ir_no = Integer.parseInt(r_no);

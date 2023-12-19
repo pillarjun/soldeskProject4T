@@ -7,20 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insertview</title>
-<script type="text/javascript" src="resources/js/boardvalid.js"></script>
+<script type="text/javascript" src="resources/js/notice/boardvalid.js"></script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<link rel="stylesheet" href="resources/css/notice/insertview.css" type="text/css">
 </head>
 <body>
 
 <!-- 글 작성 양식 -->
 
-<form name="insertBaordForm" action="board.insert" >
-<table>
+<form name="insertBaordForm" action="board.insert"  method="post">
+<table id="insertviewTable">
 	<tr>
 		<td>
 			<input name="nb_id" id="nb_id.insert" autocomplete="off" placeholder="ID">
 		</td>
 		<td colspan="2">
-			<input name="nb_pw" id="nb_pw.insert" autocomplete="off" placeholder="Password">
+			<input name="nb_pw" id="nb_pw.insert" autocomplete="off" placeholder="Password" type="password">
 		</td>
 	</tr>
 	<tr>
@@ -34,9 +36,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td></td>
-		<td></td>
-		<td>
+		<td colspan="3">
 			<button id="insertBtn"  type="submit" onclick="return validcheck();">작성</button>
 		</td>
 	</tr>

@@ -53,7 +53,7 @@ public class NoticeController {
 	}
 	
 	// insertview 에서 db에 데이터 저장 후 board으로 이동
-	@RequestMapping(value = "/board.insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.insert", method = RequestMethod.POST)
 	public String insertBoard(Board b, HttpServletRequest req) {
 		bDAO.insertBoard(b, req);
 		return "redirect:/listBoard";
@@ -81,7 +81,7 @@ public class NoticeController {
     }
 
 	// oneview 에서 게시물 삭제 후 board 로 이동
-	@RequestMapping(value = "/board.delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.delete", method = RequestMethod.POST)
 	public String deleteBoard(String nb_no, HttpServletRequest req) {
 		int inb_no = Integer.parseInt(nb_no);
 		bDAO.deleteBoard(inb_no, req);
@@ -90,7 +90,7 @@ public class NoticeController {
 	}
 	
 	// oneview에서 updateview로 이동
-	@RequestMapping(value = "/board.update.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.update.go", method = RequestMethod.POST)
 	public String goUpdateViewPwCheck(String nb_no, HttpServletRequest req) {
 		int inb_no = Integer.parseInt(nb_no);
 		bDAO.getOneBoard(inb_no, req);
@@ -99,7 +99,7 @@ public class NoticeController {
 	}
 	
 	// updateview 에서 게시물 수정 후 board 로 이동
-	@RequestMapping(value = "/board.update", method = RequestMethod.GET)
+	@RequestMapping(value = "/board.update", method = RequestMethod.POST)
 	public String updateBoard(Board b, HttpServletRequest req) {
 		b.getNb_no();
 		bDAO.updateBoard(b, req);

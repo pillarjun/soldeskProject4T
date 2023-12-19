@@ -7,15 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/js/boardvalid.js"></script>
+<script type="text/javascript" src="resources/js/notice/boardvalid.js"></script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<link rel="stylesheet" href="resources/css/notice/updateview.css" type="text/css">
 </head>
 <body>
 
 <!-- 글 수정 양식 -->
 
-<form action="board.update">
+<form action="board.update" method="post">
 <input type="hidden" name="nb_no" value='${oneboard.nb_no}'">
-<table>
+<table class="updateviewTable">
 	<tr>
 		<td>
 			<a>ID :  ${oneboard.nb_id }</a>

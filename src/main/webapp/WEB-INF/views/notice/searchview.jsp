@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+<link rel="stylesheet" href="resources/css/notice/board.css" type="text/css">
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript">
 function selChange() {
@@ -15,6 +15,7 @@ function selChange() {
 	location.href="board.search?searchType=${pagingSearch.searchType}&keyword=${pagingSearch.keyword}&nowPage=${pagingSearch.nowPage}&cntPerPage="+sel;
 };
 </script>
+</head>
 <body>
 
 
@@ -38,7 +39,7 @@ function selChange() {
 
 <!-- 게시판 본문 -->
 
-<table id="homeTable" border="1">
+<table id="homeTable">
 		<tr class="onerow">	
 			<td>NO</td>
 			<td >Title</td>
@@ -94,14 +95,14 @@ function selChange() {
 
 <!-- 글 작성 버튼 -->
 
-<table>
+<table id="insertBtnTable">
 <tr>
 	<td class="insertBtnCell">
 		<a href="insertview.go" id="insertBtn" class="hreftext">글 작성</a>
 	</td>
 </tr>
 </table>
-
+<hr>
 
 <!-- 검색어 입력 -->
 

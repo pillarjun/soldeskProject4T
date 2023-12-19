@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>NoticeBoard</title>
+<link rel="stylesheet" href="resources/css/notice/board.css" type="text/css">
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript">
 function selChange() {
@@ -19,23 +20,28 @@ function selChange() {
 
 <!-- 게시판 행 갯수 지정 -->
 
-<div class="selChange" >
-	<select id="cntPerPage" name="sel"  class="selChange"  onchange="selChange()">
-		<option value="5"  class="selChange"
-			<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-		<option value="10" class="selChange"
-			<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-		<option value="15" class="selChange"
-			<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-		<option value="20" class="selChange"
-			<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-	</select>
-</div>	
-
+<table id="selChangeTable">
+	<tr>
+		<td>
+			<div class="selChange" >
+				<select id="cntPerPage" name="sel"  class="selChange"  onchange="selChange()">
+					<option value="5"  class="selChange"
+						<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+					<option value="10" class="selChange"
+						<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+					<option value="15" class="selChange"
+						<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+					<option value="20" class="selChange"
+						<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+				</select>
+			</div>	
+		</td>
+</tr>
+</table>
 
 <!-- 게시판 본문 -->
 
-<table id="homeTable" border="1">
+<table id="homeTable" >
 		<tr class="onerow">	
 			<td>NO</td>
 			<td>Title</td>
@@ -44,9 +50,9 @@ function selChange() {
 			<td>Views</td>
 		</tr>
  		<c:forEach var="nb" items="${viewAll  }">
-		<tr>
+		<tr class="itemrow">
 			<td><a name="nb_no"><fmt:formatNumber value="${nb.nb_no }" /></a></td>
-			<td><a href="oneview.go?nb_no=${nb.nb_no} " value="nb_no" id="homeTableTitle">${nb.nb_title }</a>
+			<td><a class="noticeBoardTitle" href="oneview.go?nb_no=${nb.nb_no} " value="nb_no" id="homeTableTitle">${nb.nb_title }</a>
 					 <c:if test="${nb.nb_replycount !=0 }">
 					 	<a class="replyCount">[${nb.nb_replycount }]</a>
 					 </c:if>
@@ -88,14 +94,14 @@ function selChange() {
 
 <!-- 글 작성 버튼 -->
 
-<table>
+<table id="insertBtnTable">
 <tr>
 	<td class="insertBtnCell">
 		<a href="insertview.go" id="insertBtn" class="hreftext">글 작성</a>
 	</td>
 </tr>
 </table>
-
+<hr>
 
 <!-- 검색어 입력 -->
 

@@ -7,13 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/js/replyvalid.js"></script>
+<script type="text/javascript" src="resources/js/notice/boardvalid.js"></script>
+<script type="text/javascript" src="resources/js/notice/replyvalid.js"></script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<link rel="stylesheet" href="resources/css/notice/oneview.css" type="text/css">
 </head>
 <body>
 
 <!-- 게시물 하나에 대한 디테일 : 제목, 아이디, 본문 -->
 
-<table>
+<table class="oneviewTable">
 	<tr>
 		<td class="oneviewTitle">${oneboard.nb_title }</td>
 	</tr>
@@ -27,45 +30,46 @@
 
 <!-- 게시물 하나에 대한 디테일 : 시간, 조회수, 댓글 -->
 
-<table>
+<table class="oneviewTable">
 	<tr>
-		<td width="500px">
+		<td>
 			 <a class="oneviewWhen" >최근 변경 시간 : ${oneboard.nb_when }</a>
 		</td>
-		<td width="140px">
+		<td>
 			 <a class="oneviewCount" >조회수 : ${oneboard.nb_count }</a>
 		</td>
-		<td width="240px">
+		<td>
 			 <a class="oneviewReplyCount" >댓글 : ${oneboard.nb_replycount } 개</a>
 		</td>
-		
+	</tr>
+	
 		<!-- 수정 버튼, 삭제 버튼 -->
-		
-		<td width="140px" align="right">
-			<form name="oneform" action="board.update.go" >
+	<tr>	
+		<td align="right" colspan="2">
+			<form name="oneform" action="board.update.go"  method="post">
 				<input type="hidden" id="nb_no"  name="nb_no" value="${oneboard.nb_no }">
 				<input type="hidden" id ="nb_pw" value="${oneboard.nb_pw}">
 				<button id="boardUpdateBtn" type="submit"
-				onclick="return pwcheck();">게시물 수정</button>
+				onclick="return pwcheck();">수정</button>
 			</form>
 		</td>
-		<td width="140px" align="right">
-			<form name="oneform" action="board.delete" >
+		<td align="right">
+			<form name="oneform" action="board.delete"  method="post">
 				<input type="hidden" id="nb_no" name="nb_no" value="${oneboard.nb_no }">
 				<input type="hidden" id="nb_pw" value="${oneboard.nb_pw}">
 				<button id="boardDeleteBtn" type="submit"
-				onclick="return pwcheck();">게시물 삭제</button>
+				onclick="return pwcheck();">삭제</button>
 			</form>
 		</td>
 	</tr>
 </table>
 
-<hr> <!--  댓글 내용란 -->
+<!--  댓글 내용란 -->
 
-<table>
+<table class="oneviewTable">
 	<c:forEach var="r" items="${ replyAll }" >
 	<tr>
-		<form name="oneform" action="reply.delete" >
+		<form name="oneform" action="reply.delete"  method="post">
 			<input type="hidden" id="r_pw" value="${r.r_pw}">
 			<td class="replyId">${r.r_id } </td>
 			<td class="replyContent">${r.r_content} </td>
@@ -82,11 +86,11 @@
 
 <!-- 댓글 입력란 -->
 
-<table>
-	<form action="reply.insert">
+<table class="oneviewTable">
+	<form action="reply.insert" method="post">
 		<input type="hidden" name="nb_no" value="${oneboard.nb_no }">
 		<tr class="replyInsertTable">
-			<td width="150px">
+			<td>
 				<input name="r_id" id="r_id.insert" autocomplete="off" 
 				placeholder="ID">
 			</td>
@@ -94,14 +98,15 @@
 				<textarea name="r_content" id="r_content.insert"  placeholder="Comment"
 				autocomplete="off"></textarea>
 			</td>
-			<td rowspan="2" width="50px">
+			<td rowspan="2">
 				<button id="replyUpdateBtn" type="submit"  
 				onclick="return replyvalidcheck();">댓글 작성</button>
 			</td>
 		</tr>
 		<tr class="replyInsertTable">
 			<td>
-				<input name= "r_pw" id="r_pw.insert" autocomplete="off" placeholder="Password"> <br>
+				<input name= "r_pw" id="r_pw.insert" autocomplete="off"
+				placeholder="Password" type="password"> <br>
 			</td>
 		</tr>
 	</form>
