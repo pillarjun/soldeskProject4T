@@ -39,12 +39,7 @@ public class STSController {
 		return td;
 	}
 	
-	
-	@RequestMapping(value="/endSession", method = RequestMethod.GET)
-	public String endSession(HttpServletRequest req) {
-		req.getSession().invalidate();
-		return "VideoToText";
-	}
+
 	
 
 

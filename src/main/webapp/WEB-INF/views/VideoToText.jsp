@@ -41,9 +41,6 @@
 	</c:when>
 </c:choose>
 
-<form action="endSession" method="get">
-<button>세션 끝내기</button>
-</form>
 <hr>
 <table id="contentT">
 <tr>

@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +17,14 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.team.dec051.timeline.Constants;
 
 
 @Service
 public class MemberDAO {
+	
+    private String uploadDir = Constants.getPersonalFolderDir();
+
 
 	@Autowired
 	private SqlSession ss;
@@ -32,12 +39,21 @@ public class MemberDAO {
 			m.setM_pw(mr.getParameter("m_pw"));
 			m.setM_name(mr.getParameter("m_name"));
 			m.setM_email(mr.getParameter("m_email"));
+			m.setM_folder(mr.getParameter("m_id"));
 
+			
+			
 			String m_photo = mr.getFilesystemName("m_photo");
 			String m_photo_kor = URLEncoder.encode(m_photo, "UTF-8").replace("+", " ");
 			m.setM_photo(m_photo_kor);
 
 			if (ss.getMapper(MemberMapper.class).signupMember(m) == 1) {
+				String folder_path = uploadDir+"/" + m.getM_folder();
+				Path p = Paths.get(folder_path);
+				
+				Files.createDirectories(p);
+				System.out.println("개인폴더생성");
+				
 				req.setAttribute("r", "가입 성공");
 			}
 		} catch (Exception e) {
