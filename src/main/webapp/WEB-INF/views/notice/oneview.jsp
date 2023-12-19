@@ -24,7 +24,7 @@
 		<td class="oneviewId" >${oneboard.nb_id }</td>
 	</tr>
 	<tr>
-		<td class="oneviewContent" >${oneboard.nb_content }</td>
+		<td class="oneviewContent" ><pre>${oneboard.nb_content }</pre></td>
 	</tr>
 </table>
 
@@ -72,7 +72,7 @@
 		<form name="oneform" action="reply.delete"  method="post">
 			<input type="hidden" id="r_pw" value="${r.r_pw}">
 			<td class="replyId">${r.r_id } </td>
-			<td class="replyContent">${r.r_content} </td>
+			<td class="replyContent"><pre>${r.r_content} </pre></td>
 			<td class="replyWhen">${r.r_when } </td>
 			<td><button id="replyDeleteBtn" type="submit"  
 					onclick="return replypwcheck();">X</button></td>

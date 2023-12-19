@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#insertviewTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1rem auto;
+}
+#insertviewTable td {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+#insertviewTable textarea{
+	width : 100%;
+	height: 150px;
+}
+#insertBtn{
+	text-decoration: none;
+	color: inherit;
+	float: right;
+}
+#insertBtn:hover {
+	color: white;
+	background-color: darkred;
+    transition: 0.3s;
+}

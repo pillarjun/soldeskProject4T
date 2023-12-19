@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.updateviewTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1rem auto;
+	background-color: white;
+}
+.updateviewTable td {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+#updateBtn:hover  {
+	color: white;
+	background-color: darkred;
+    transition: 0.3s;
+}
+.updateviewTable textarea {
+	width: 100%;
+	height: 150px;
+}

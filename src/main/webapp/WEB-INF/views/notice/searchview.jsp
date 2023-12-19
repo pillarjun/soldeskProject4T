@@ -50,8 +50,8 @@ function selChange() {
  		<c:forEach var="m" items="${viewSearch }">
 		<tr class="homeTableRow">
 			<td><a name="nb_no"><fmt:formatNumber value="${m.nb_no }" /></a></td>
-			<td><a href="oneview.go?nb_no=${m.nb_no} " value="nb_no" 
-			id="homeTableTitle" class="hreftext">${m.nb_title }</a>
+			<td><a class="noticeBoardTitle" href="oneview.go?nb_no=${m.nb_no} " value="nb_no" 
+			id="homeTableTitle" >${m.nb_title }</a>
 			<c:if test="${m.nb_replycount !=0 }">
 					 	<a class="replyCount">[${m.nb_replycount }]</a>
 					 </c:if>
