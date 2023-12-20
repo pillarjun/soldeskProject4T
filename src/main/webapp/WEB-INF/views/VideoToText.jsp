@@ -42,10 +42,15 @@
 </c:choose>
 
 <hr>
+
 <table id="contentT">
-<tr>
-<td id="timeLine"></td>
-</tr>
+	<tr>
+			<td id="topWords"></td>
+			<td id="ta"><textarea id="vtt_textArea"></textarea></td>
+	</tr>
+	<tr>
+		<td id="timeLine"></td>
+	</tr>
 </table>
 
 

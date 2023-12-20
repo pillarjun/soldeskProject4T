@@ -14,9 +14,13 @@
 	<table id="siteLoginArea">
 		<tr>
 			<td>
-				<a id="timelineBtn" href="timeline.go">
-					영상 분석
-				</a>
+				<c:choose>
+					<c:when test="${sessionScope.loginMember.m_id != null }">
+						<a id="timelineBtn" href="timeline.go">
+						영상 분석
+						</a>
+					</c:when>
+				</c:choose>
 			</td>
 		</tr>
 		<tr>
