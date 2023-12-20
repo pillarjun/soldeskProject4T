@@ -83,7 +83,31 @@ public class MemberContoller {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/member.idsearch", method = RequestMethod.GET)
+	public String searchMemberId(HttpServletRequest req) {
+		req.setAttribute("cp", "member/idsearch.jsp");
+		return "index";
+	}
 	
+	@RequestMapping(value = "/member.idsearchOk", method = RequestMethod.POST)
+	public String searchMemberIdOk(String m_email, HttpServletRequest req) {
+		mDAO.idcheck(m_email, req);
+		req.setAttribute("cp", "member/idsearchok.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/member.pwsearch", method = RequestMethod.GET)
+	public String searchMemberPw(HttpServletRequest req) {
+		req.setAttribute("cp", "member/pwsearch.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/member.pwsearchOk", method = RequestMethod.POST)
+	public String searchMemberPwOk(String m_id, HttpServletRequest req) {
+		mDAO.pwcheck(m_id, req);
+		req.setAttribute("cp", "member/pwsearchok.jsp");
+		return "index";
+	}
 	
 	
 	

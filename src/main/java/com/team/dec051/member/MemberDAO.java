@@ -29,6 +29,16 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession ss;
 	
+	public List<Member> idcheck(String m_email, HttpServletRequest req) {
+		req.setAttribute("getInfoId", ss.getMapper(MemberMapper.class).getId(m_email));
+		return ss.getMapper(MemberMapper.class).getId(m_email);
+	}
+	
+	public List<Member> pwcheck(String m_id, HttpServletRequest req) {
+		req.setAttribute("getInfoPw", ss.getMapper(MemberMapper.class).getPw(m_id));
+		return ss.getMapper(MemberMapper.class).getPw(m_id);
+	}
+	
 	public void signup(Member m, HttpServletRequest req) {
 		try {
 			String path = req.getSession().getServletContext().getRealPath("resources/img");

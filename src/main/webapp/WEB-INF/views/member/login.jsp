@@ -24,7 +24,22 @@
 					<button>로그인</button>
 				</td>
 			</tr>
-		</table>
 	</form>
+	<form action="member.idsearch" method="get">
+			<tr>
+				<td>
+					<button>아이디 찾기</button>
+				</td>
+			</tr>
+	</form>
+	<form action="member.pwsearch" method="get">
+			<tr>
+				<td>
+					<button>비밀번호 찾기</button>
+				</td>
+			</tr>
+	</form>
+			</tr>
+		</table>
 </body>
 </html>

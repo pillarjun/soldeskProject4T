@@ -53,18 +53,17 @@ $(function() {
 		<table id="signupTbl">
 			<tr>
 				<td colspan="2">
-					<input id="signupId" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" maxlength="10" class="i1">
-					<div id="msg"></div>
+					<input id="signupId" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" class="i1">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pw" placeholder="Password" autocomplete="off" maxlength="10" type="password" class="i1">
+					<input name="m_pw" placeholder="Password" autocomplete="off" type="password" class="i1">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pwChk"placeholder="Password Check" autocomplete="off" maxlength="10" type="password" class="i1">
+					<input name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password" class="i1">
 				</td>
 			</tr>
 			<tr>
@@ -83,6 +82,10 @@ $(function() {
 					</select>
 					<input type="hidden" name="m_email" value="">
 					<button type="button" id="mailCheckBtn">본인인증</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 					<span id="mailCheckMessage"></span>
 				</td>
