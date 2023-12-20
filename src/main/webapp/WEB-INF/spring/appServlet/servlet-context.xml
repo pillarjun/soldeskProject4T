@@ -16,7 +16,7 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -29,8 +29,8 @@
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="asdf" />
-		<beans:property name="password" value="1" />
+		<beans:property name="username" value="SYSTEM" />
+		<beans:property name="password" value="357896" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -43,7 +43,9 @@
 		<beans:property name="typeAliasesPackage" value="com.team.dec051" />
 		<beans:property name="mapperLocations">
 			<beans:list>
-				
+				<beans:value>classpath:mapper/memberMapper.xml</beans:value>
+				<beans:value>classpath:mapper/boardMapper.xml</beans:value>
+				<beans:value>classpath:mapper/replyMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -52,5 +54,9 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
-
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="defaultEncoding" value="UTF-8"/>
+        <beans:property name="maxUploadSize" value="524288000"/> <!-- 500MB로 설정, 필요에 따라 조절 -->
+    </beans:bean>
 </beans:beans>

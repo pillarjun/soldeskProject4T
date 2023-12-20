@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.oneviewTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1rem auto;
+	background-color: white;
+}
+.oneviewTable td {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+.oneviewTitle{
+	font-weight: bold;
+}
+.oneviewWhen, .replyWhen, .oneviewCount, .oneviewReplyCount, #replyDeleteBtn, #replyUpdateBtn {
+	color: grey;
+}
+.replyInsertTable {
+	padding: 16px;
+	background-color: Mistyrose;
+	color: white;
+}
+#boardUpdateBtn:hover, #boardDeleteBtn:hover, #replyUpdateBtn:hover, #replyDeleteBtn:hover {
+	color: white;
+	background-color: darkred;
+    transition: 0.3s;
+}
+.replyId{
+	font-weight: bold;
+}

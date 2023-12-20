@@ -1,0 +1,69 @@
+@charset "UTF-8";
+#selChangeTable{
+	width: 100%
+}
+.selChange{
+	float: right;
+}
+.onerow {
+	padding: 16px;
+	color: white;
+	text-align: center;
+	background-color: gray;
+	border-bottom: 1px solid #ddd;
+}
+#homeTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1rem auto;
+	background-color: white;
+}
+#homeTable td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+.noticeBoardTitle{
+	text-decoration: none;
+	color: inherit;
+}
+.replyCount{
+	color: gray;
+}
+.nowPageNum {
+	color:darkred;
+	text-decoration: underline;
+}
+.otherPageNum {
+	color: black;
+	text-decoration: none;
+}
+.otherPageNum:hover {
+	color: white;
+	background-color: black;
+	text-decoration: none;
+    transition: 0.2s;
+}
+#homeTableTitle:hover {
+	text-decoration: underline;
+	font-weight: bold;
+}
+#insertBtnTable{
+	width: 100%;
+}
+.insertBtnCell {
+	float: right;
+	color: white;
+	background-color: gray;
+	border-radius: 10px;
+}
+#insertBtn{
+	text-decoration: none;
+	color: inherit;
+}
+.insertBtnCell:hover {
+	color: white;
+	background-color: darkred;
+    transition: 0.3s;
+}
