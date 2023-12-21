@@ -5,6 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Info</title>
+<script type="text/javascript">
+$(function() {
+	$('#pwChk').blur(function() {
+		const inputpwChk = $(this).val();
+		const inputpw = $('#pw').val();
+		const $resultMsg = $('#pwCheckMessage');
+		
+		if(inputpw === inputpwChk){
+			$resultMsg.html('비밀번호 일치');
+			$resultMsg.css('color','green');
+		}else{
+			$resultMsg.html('비밀번호 불일치');
+			$resultMsg.css('color','red');
+		}
+	})
+});
+</script>
 </head>
 <body>
 	<table id="signupTbl">
@@ -17,12 +34,13 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pw" placeholder="Password" autocomplete="off" autofocus="autofocus" type="password">
+					<input id="pw" name="m_pw" placeholder="Password" autocomplete="off" autofocus="autofocus" type="password">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password">
+					<input id="pwChk" name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password">
+					<span id="pwCheckMessage"></span>
 				</td>
 			</tr>
 			<tr>
@@ -32,7 +50,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input value="${sessionScope.loginMember.m_email }"  name="m_email" autocomplete="off">
+					<input value="${sessionScope.loginMember.m_email }"  name="m_email" autocomplete="off" readonly="readonly">
 				</td>
 			</tr>		
 			<tr>
@@ -51,7 +69,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button id="updateMemberBtn">계정 수정</button>
+					<button id="updateMemberBtn" onclick="return pwcheck();">계정 수정</button>
 			</form>
 			<form  action="member.resign">
 					<button id="deleteMemberBtn">계정 삭제</button>

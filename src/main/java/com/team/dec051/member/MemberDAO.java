@@ -2,9 +2,7 @@ package com.team.dec051.member;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.file.FileVisitOption;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -23,8 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.team.dec051.timeline.Constants;
 
 
@@ -69,6 +65,7 @@ public class MemberDAO {
 	        m.setM_folder(req.getParameter("m_id"));
 	        m.setM_photo(fileName);
 
+			
 			if (ss.getMapper(MemberMapper.class).signupMember(m) == 1) {
 				String folder_path = uploadDir+"/" + m.getM_folder();
 				Path p = Paths.get(folder_path);
@@ -112,7 +109,7 @@ public class MemberDAO {
 				if (dbM.getM_pw().equals(m.getM_pw())) {
 					req.setAttribute("r", "로그인 성공");
 					req.getSession().setAttribute("loginMember", dbM);
-					req.getSession().setMaxInactiveInterval(600);
+					req.getSession().setMaxInactiveInterval(6000);
 					
 				} else {
 					req.setAttribute("r", "로그인 실패(PW 오류");
@@ -140,6 +137,7 @@ public class MemberDAO {
 	public void delete(HttpServletRequest req) {
 		try {
 			Member m = (Member) req.getSession().getAttribute("loginMember");
+			
 			if (ss.getMapper(MemberMapper.class).deleteMember(m) == 1) {
 				req.setAttribute("r", "탈퇴 성공");
 				req.getSession().setAttribute("loginMember", null);
@@ -165,6 +163,7 @@ public class MemberDAO {
 		}
 	}
 	
+
 	public static void deleteFolder(Path folderPath) throws IOException {
         if (Files.exists(folderPath)) {
             Files.walkFileTree(folderPath, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new SimpleFileVisitor<Path>() {
@@ -237,20 +236,14 @@ public class MemberDAO {
 			req.setAttribute("r", "정보 수정 실패");
 			
 		}
-		
 	}
-	
-	
-	
-	
+
+
+
+
+
+
 }
-
-
-
-
-
-
-
 
 
 

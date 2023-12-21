@@ -49,6 +49,7 @@ public class MemberContoller {
 			e.printStackTrace();
 		}
 		mDAO.signup(file,req);
+
 		req.setAttribute("cp", "home.jsp");
 		return "index";
 	}
@@ -87,6 +88,13 @@ public class MemberContoller {
 	
 	@RequestMapping(value = "/member.update", method = RequestMethod.POST)
 	public String memberUpdate(@RequestParam("m_photo") MultipartFile file, HttpServletRequest req) {
+
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
 		mDAO.update(file, req);
 		req.setAttribute("cp", "member/info.jsp");
 		return "index";

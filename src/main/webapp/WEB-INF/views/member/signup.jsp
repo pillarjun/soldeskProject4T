@@ -9,6 +9,21 @@
 <title>Signup</title>
 <script type="text/javascript">
 $(function() {
+	$('#pwChk').blur(function() {
+		const inputpwChk = $(this).val();
+		const inputpw = $('#pw').val();
+		const $resultMsg = $('#pwCheckMessage');
+		
+		if(inputpw === inputpwChk){
+			$resultMsg.html('비밀번호 일치');
+			$resultMsg.css('color','green');
+		}else{
+			$resultMsg.html('비밀번호 불일치');
+			$resultMsg.css('color','red');
+		}
+	})
+});
+$(function() {
 	$('#mailCheckBtn').click(function() {
 		const email = $('#userEmail1').val() + $('#userEmail2').val(); 
 		console.log('완성된 이메일 : ' + email);
@@ -65,7 +80,8 @@ function qwer() {
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pwChk"placeholder="Password Check" autocomplete="off" maxlength="10" type="password" class="i1">
+					<input id="pwChk" name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password" class="i1">
+					<span id="pwCheckMessage"></span>
 				</td>
 			</tr>
 			<tr>
@@ -84,7 +100,11 @@ function qwer() {
 					</select>
 					<input type="hidden" name="m_email" value="">
 					<button type="button" id="mailCheckBtn">본인인증</button>
-					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" onblur="qwer();" disabled="disabled" maxlength="6">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 					<span id="mailCheckMessage"></span>
 				</td>
 			</tr>

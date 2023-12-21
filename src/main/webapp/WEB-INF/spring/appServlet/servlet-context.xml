@@ -55,8 +55,10 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 	
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <beans:property name="defaultEncoding" value="UTF-8"/>
-        <beans:property name="maxUploadSize" value="524288000"/> <!-- 500MB로 설정, 필요에 따라 조절 -->
+        <beans:property name="maxUploadSize" value="524288000"/> 
     </beans:bean>
+    
+
 </beans:beans>
