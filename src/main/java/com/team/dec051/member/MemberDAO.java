@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.team.dec051.timeline.Constants;
 
 
@@ -39,24 +38,24 @@ public class MemberDAO {
 		return ss.getMapper(MemberMapper.class).getPw(m_id);
 	}
 	
-	public void signup(Member m, HttpServletRequest req) {
+	public void signup(MultipartFile file, HttpServletRequest req) {
 		try {
 			String path = req.getSession().getServletContext().getRealPath("resources/img");
 			System.out.println(path);
 			
-			MultipartRequest mr = new MultipartRequest(req, path, 30 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
-			m.setM_id(mr.getParameter("m_id"));
-			m.setM_pw(mr.getParameter("m_pw"));
-			m.setM_name(mr.getParameter("m_name"));
-			m.setM_email(mr.getParameter("m_email"));
-			m.setM_folder(mr.getParameter("m_id"));
-
+			Member m = new Member();
 			
+			String fileName = file.getOriginalFilename();
+			String filePath = Paths.get(path, fileName).toString();
+			file.transferTo(new File(filePath));
+		
+			m.setM_id(req.getParameter("m_id"));
+			m.setM_pw(req.getParameter("m_pw"));
+			m.setM_name(req.getParameter("m_name"));
+			m.setM_email(req.getParameter("m_email"));
+			m.setM_folder(req.getParameter("m_id"));
+			m.setM_photo(fileName);
 			
-			String m_photo = mr.getFilesystemName("m_photo");
-			String m_photo_kor = URLEncoder.encode(m_photo, "UTF-8").replace("+", " ");
-			m.setM_photo(m_photo_kor);
-
 			if (ss.getMapper(MemberMapper.class).signupMember(m) == 1) {
 				String folder_path = uploadDir+"/" + m.getM_folder();
 				Path p = Paths.get(folder_path);
@@ -87,7 +86,7 @@ public class MemberDAO {
 				if (dbM.getM_pw().equals(m.getM_pw())) {
 					req.setAttribute("r", "로그인 성공");
 					req.getSession().setAttribute("loginMember", dbM);
-					req.getSession().setMaxInactiveInterval(600);
+					req.getSession().setMaxInactiveInterval(6000);
 					
 				} else {
 					req.setAttribute("r", "로그인 실패(PW 오류");
@@ -114,6 +113,7 @@ public class MemberDAO {
 	public void delete(HttpServletRequest req) {
 		try {
 			Member m = (Member) req.getSession().getAttribute("loginMember");
+			
 			if (ss.getMapper(MemberMapper.class).deleteMember(m) == 1) {
 				req.setAttribute("r", "탈퇴 성공");
 				req.getSession().setAttribute("loginMember", null);
@@ -132,60 +132,97 @@ public class MemberDAO {
 		}
 	}
 	
-	public void update(HttpServletRequest req) {
-		String path = null;
-		Member m = (Member) req.getSession().getAttribute("loginMember");
-		MultipartRequest mr = null;
-		String old_m_photo = m.getM_photo();
-		String new_m_photo = null;
-		try {
-			path = req.getSession().getServletContext().getRealPath("resources/img");
-			mr = new MultipartRequest(req, path, 30 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy());
-			
-			new_m_photo = mr.getFilesystemName("m_photo");
-			if (new_m_photo != null) {
-				new_m_photo = URLEncoder.encode(new_m_photo, "UTF-8").replace("+", " ");
-			} else {
-				new_m_photo = old_m_photo;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
+	   public void update(MultipartFile file, HttpServletRequest req) {
+		      String path = req.getSession().getServletContext().getRealPath("resources/img");
+		      Member m = (Member) req.getSession().getAttribute("loginMember");
+		      String old_m_photo = m.getM_photo();
+		      String new_m_photo = file.getOriginalFilename();
+		      
+		      try {
+		         if (new_m_photo.isEmpty()) {
+		            new_m_photo = old_m_photo;
+		         }
+		         
+		         String filePath = Paths.get(path, new_m_photo).toString();
+		         file.transferTo(new File(filePath));
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		         return;
+		      }
+		      
+		      try {
+		         m.setM_pw(req.getParameter("m_pw"));
+		         m.setM_name(req.getParameter("m_name"));
+		         m.setM_email(req.getParameter("m_email"));
+		         m.setM_photo(new_m_photo);
+		         
+		         if (ss.getMapper(MemberMapper.class).updateMember(m) == 1) {
+		            req.setAttribute("r", "정보 수정 성공");
+		            if (!new_m_photo.equals(old_m_photo)) {
+		               new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
+		            }
+		            req.getSession().setAttribute("loginMember", m);
+		         } else {
+		            req.setAttribute("r", "정보 수정 실패");
+		            if (!new_m_photo.equals(old_m_photo)) {
+		               new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
+		            }
+		         }
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		         req.setAttribute("r", "정보 수정 실패");
+		         if (!new_m_photo.equals(old_m_photo)) {
+		            try {
+		               new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
+		            } catch (UnsupportedEncodingException e1) {
+		               e1.printStackTrace();
+		            }
+		         }
+		      }
+		      
+		   }
+
+/*public void update(MultipartFile file, HttpServletRequest req) {
+	String path = null;
+	Member m = (Member) req.getSession().getAttribute("loginMember");
+	String old_m_photo = m.getM_photo();
+	try {
+		path = req.getSession().getServletContext().getRealPath("resources/img");
+		String originalNewFileName = file.getOriginalFilename();
+		String old_pw = m.getM_pw();
+		String new_m_photo = old_m_photo;
+		String new_pw = old_pw;
+		
+		if(!file.isEmpty()) {
+			String oldFileExtension = getFileExtension(originalNewFileName);
+			new_m_photo = generateUniqueFileName(oldFileExtension);
+			String newFilePath = Paths.get(path, new_m_photo).toString();
+			file.transferTo(new File(newFilePath));
 		}
 		
-		try {
-			m.setM_pw(mr.getParameter("m_pw"));
-			m.setM_name(mr.getParameter("m_name"));
-			m.setM_email(mr.getParameter("m_email"));
-			m.setM_photo(new_m_photo);
-			
-			if (ss.getMapper(MemberMapper.class).updateMember(m) == 1) {
-				req.setAttribute("r", "정보 수정 성공");
-				if (!new_m_photo.equals(old_m_photo)) {
-					new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
-				}
-				req.getSession().setAttribute("loginMember", m);
-			} else {
-				req.setAttribute("r", "정보 수정 실패");
-				if (!new_m_photo.equals(old_m_photo)) {
-					new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			req.setAttribute("r", "정보 수정 실패");
+		if(!req.getParameter("m_pw").isEmpty()) {
+			new_pw = req.getParameter("m_pw");
+		}
+
+		m.setM_pw("new_pw");
+		m.setM_name(req.getParameter("m_name"));
+		m.setM_email(req.getParameter("m_email"));
+		m.setM_photo(new_m_photo);
+		
+		if (ss.getMapper(MemberMapper.class).updateMember(m) == 1) {
+			req.setAttribute("r", "정보 수정 성공");
 			if (!new_m_photo.equals(old_m_photo)) {
-				try {
-					new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
-				} catch (UnsupportedEncodingException e1) {
-					e1.printStackTrace();
-				}
+				new File(path + "/" + URLDecoder.decode(old_m_photo, "UTF-8")).delete();
 			}
+			req.getSession().setAttribute("loginMember", m);
+		} else {
+			req.setAttribute("r", "정보 수정 실패");
 		}
-		
-	}
-	
-	
+	} catch (Exception e) {
+		e.printStackTrace();
+		req.setAttribute("r", "정보 수정 실패");
+		}
+	}*/
 	
 	
 }

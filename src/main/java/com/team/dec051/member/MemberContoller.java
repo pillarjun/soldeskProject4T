@@ -1,12 +1,16 @@
 package com.team.dec051.member;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MemberContoller {
@@ -38,8 +42,13 @@ public class MemberContoller {
 	}
 	
 	@RequestMapping(value = "/member.signup", method = RequestMethod.POST)
-	public String signupMember(Member m, HttpServletRequest req) {
-		mDAO.signup(m, req);
+	public String signupMember(@RequestParam("m_photo") MultipartFile file, HttpServletRequest req) {
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		mDAO.signup(file, req);
 		req.setAttribute("cp", "home.jsp");
 		return "index";
 	}
@@ -77,8 +86,13 @@ public class MemberContoller {
 	}
 	
 	@RequestMapping(value = "/member.update", method = RequestMethod.POST)
-	public String memberUpdate(HttpServletRequest req) {
-		mDAO.update(req);
+	public String memberUpdate(@RequestParam("m_photo") MultipartFile file, HttpServletRequest req) {
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		mDAO.update(file, req);
 		req.setAttribute("cp", "member/info.jsp");
 		return "index";
 	}

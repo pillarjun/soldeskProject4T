@@ -9,6 +9,21 @@
 <title>Signup</title>
 <script type="text/javascript">
 $(function() {
+	$('#pwChk').blur(function() {
+		const inputpwChk = $(this).val();
+		const inputpw = $('#pw').val();
+		const $resultMsg = $('#pwCheckMessage');
+		
+		if(inputpw === inputpwChk){
+			$resultMsg.html('비밀번호 일치');
+			$resultMsg.css('color','green');
+		}else{
+			$resultMsg.html('비밀번호 불일치');
+			$resultMsg.css('color','red');
+		}
+	})
+});
+$(function() {
 	$('#mailCheckBtn').click(function() {
 		const email = $('#userEmail1').val() + $('#userEmail2').val(); 
 		console.log('완성된 이메일 : ' + email);
@@ -58,12 +73,13 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pw" placeholder="Password" autocomplete="off" type="password" class="i1">
+					<input id="pw"  name="m_pw" placeholder="Password" autocomplete="off" type="password" class="i1">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password" class="i1">
+					<input id="pwChk" name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password" class="i1">
+					<span id="pwCheckMessage"></span>
 				</td>
 			</tr>
 			<tr>

@@ -12,7 +12,17 @@
 <script type="text/javascript" src="resources/js/timeline/submitValidation.js"></script>
 <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
 <script src="https://unpkg.com/video.js/dist/video.js"></script>
-
+<style>
+#timeLine a {
+	background:  linear-gradient(to right, rgba(255,255,255,0) 50%, #f3be00 50%);
+	background-size: 200%;
+	transition: .25s;
+	cursor:pointer;
+}
+#timeLine a:hover {
+	background-position: -100% 0;
+}
+</style>
 </head>
 <body>
 

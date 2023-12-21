@@ -107,7 +107,6 @@ function selChange() {
 
 <form action="board.search" name="search-form">
 	<select name="searchType" class="type-box">
-		<option value="">Search Type</option>
 		<option value="nb_title">Title</option>
 		<option value="nb_id">ID</option>
 		<option value="nb_content">Content</option>
