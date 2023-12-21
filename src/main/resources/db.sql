@@ -21,7 +21,7 @@ create table noticeboard(
 	nb_content varchar2(4000) not null,
 	nb_when varchar2(30) not null,
 	nb_count number(5) not null,
-	nb_noticereplycount number(5) not null
+	nb_replycount number(5) not null
 );
 
 drop sequence noticeboard_seq;
