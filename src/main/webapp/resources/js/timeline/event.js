@@ -4,15 +4,35 @@ $(document).ready(()=>{
 	console.log("document ready");
 	var token = $("#token").val();
 	
+	function showLoadingScreen() {
+		// 로딩 화면 표시
+		$('#loading-overlay').show();
+	}
+
+	function hideLoadingScreen() {
+		// 로딩 화면 숨김
+		$('#loading-overlay').hide();
+	}
+	
+	function showTextArea() {
+	  $('#vtt_textArea').show();
+	}
+
+	function hideTextArea() {
+	  $('#vtt_textArea').hide();
+	}
+	
+	hideTextArea();
 	
 	$("#getTextData").click(function(){
+		showLoadingScreen();
 		$.ajax({
 			url:"sendToPython",
 			method:"GET",
 			data:{"token":token},
 			success:function(res){
 				console.log("성공");
-				
+				showTextArea();
 				var transcript = res.transcript;
 				var topWords = res.topWords;
 				var wat = res.wat;
@@ -47,6 +67,10 @@ $(document).ready(()=>{
 			},
 			error:function(){
 				console.log("실패")
+				hideLoadingScreen();
+			},
+			complete:function(){
+				hideLoadingScreen();
 			}
 		});
 	});

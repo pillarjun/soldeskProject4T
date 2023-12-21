@@ -86,8 +86,8 @@ public class MemberContoller {
 	}
 	
 	@RequestMapping(value = "/member.update", method = RequestMethod.POST)
-	public String memberUpdate(HttpServletRequest req) {
-		mDAO.update(req);
+	public String memberUpdate(@RequestParam("m_photo") MultipartFile file, HttpServletRequest req) {
+		mDAO.update(file, req);
 		req.setAttribute("cp", "member/info.jsp");
 		return "index";
 	}

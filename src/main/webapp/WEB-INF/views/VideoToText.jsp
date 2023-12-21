@@ -10,6 +10,7 @@
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/timeline/event.js"></script>
 <script type="text/javascript" src="resources/js/timeline/submitValidation.js"></script>
+<link rel="stylesheet" href="resources/css/timeline/loading.css">
 <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
 <script src="https://unpkg.com/video.js/dist/video.js"></script>
 
@@ -33,13 +34,24 @@
 
 <c:choose>
 	<c:when test="${sessionScope.UploadedFileName != null }">
-		<h2>Uploaded Videos</h2>
 		<video width="640" height="480" class="video-js vjs-default-skin" id="userVideo">
     		<source src="videos" type="video/mp4">
 		</video>
 			<button id="getTextData">분석하기</button>
 	</c:when>
 </c:choose>
+
+<table>
+	<tr>
+		<td>
+			<div id="loading-overlay">
+			  <div class="loading-spinner"></div>
+			  <p id="loading-message">이 작업은 조금 오래 걸릴 수 있습니다. 기다려주세요...</p>
+			</div>
+		</td>
+	</tr>
+</table>
+
 
 <hr>
 
@@ -49,7 +61,7 @@
 			<td id="ta"><textarea id="vtt_textArea"></textarea></td>
 	</tr>
 	<tr>
-		<td id="timeLine"></td>
+		<td colspan=2 id="timeLine"></td>
 	</tr>
 </table>
 
