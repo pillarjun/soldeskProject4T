@@ -142,9 +142,10 @@ public class MemberDAO {
 		         if (new_m_photo.isEmpty()) {
 		            new_m_photo = old_m_photo;
 		         }
-		         
+		         else{
 		         String filePath = Paths.get(path, new_m_photo).toString();
 		         file.transferTo(new File(filePath));
+			 }
 		      } catch (Exception e) {
 		         e.printStackTrace();
 		         return;
