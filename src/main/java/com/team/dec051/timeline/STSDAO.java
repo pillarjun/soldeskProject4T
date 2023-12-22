@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -114,9 +118,23 @@ public class STSDAO {
 			
 	}
 	
-	public void make_personal_folder(String folderName) {
-		
-	}
+//	public void deleteVideo(HttpServletRequest req) {
+//		
+//		HttpSession hs = req.getSession(false);
+//		String dir = Constants.getPersonalFolderDir();
+//		Member mb = (Member) hs.getAttribute("loginMember");
+//		System.out.println(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
+//			
+//		try {
+//			if(hs.getAttribute("UploadedFileName")!=null) {
+//				Path path = Paths.get(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
+//				Files.delete(path);
+//			}
+//				
+//		}catch(Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//	
+//	}
 	
-	
-}
+}//class end

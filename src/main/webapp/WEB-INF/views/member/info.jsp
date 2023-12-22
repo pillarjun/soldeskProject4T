@@ -70,8 +70,10 @@ $(function() {
 			<tr>
 				<td colspan="2">
 					<button id="updateMemberBtn" onclick="return pwcheck();">계정 수정</button>
+				</td>
 			</form>
 			<form  action="member.resign">
+				<td>
 					<button id="deleteMemberBtn">계정 삭제</button>
 				</td>
 			</tr>

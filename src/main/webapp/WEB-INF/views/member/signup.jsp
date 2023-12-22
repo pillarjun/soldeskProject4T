@@ -7,12 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Signup</title>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript">
 $(function() {
 	$('#pwChk').blur(function() {
 		const inputpwChk = $(this).val();
 		const inputpw = $('#pw').val();
 		const $resultMsg = $('#pwCheckMessage');
+		
+		console.log("inputpwChk"+inputpwChk);
+		console.log("inputpw"+inputpw);
 		
 		if(inputpw === inputpwChk){
 			$resultMsg.html('비밀번호 일치');
@@ -42,8 +46,9 @@ $(function() {
 	});
 });
 
-function qwer() {
+$(function () {
 	$('.mailCheckInput').blur(function () {
+		console.log("mailCheck");
 		const inputCode = $(this).val();
 		const $resultMsg = $('#mailCheckMessage');
 		
@@ -61,7 +66,7 @@ function qwer() {
 			$resultMsg.css('color','red');
 		}
 	});
-}
+});
 </script>
 </head>
 <body>
@@ -75,7 +80,7 @@ function qwer() {
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_pw" placeholder="Password" autocomplete="off" maxlength="10" type="password" class="i1">
+					<input id="pw" name="m_pw" placeholder="Password" autocomplete="off" maxlength="10" type="password" class="i1">
 				</td>
 			</tr>
 			<tr>
@@ -104,7 +109,7 @@ function qwer() {
 			</tr>
 			<tr>
 				<td>
-					<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
+					<input class="mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 					<span id="mailCheckMessage"></span>
 				</td>
 			</tr>

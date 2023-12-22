@@ -30,7 +30,12 @@ $(document).ready(()=>{
 			url:"sendToPython",
 			method:"GET",
 			data:{"token":token},
+			complete:function(){
+				console.log("완료")
+				hideLoadingScreen();
+			},
 			success:function(res){
+				hideLoadingScreen();
 				console.log("성공");
 				showTextArea();
 				var transcript = res.transcript;
@@ -68,10 +73,8 @@ $(document).ready(()=>{
 			error:function(){
 				console.log("실패")
 				hideLoadingScreen();
-			},
-			complete:function(){
-				hideLoadingScreen();
 			}
+			
 		});
 	});
 	
