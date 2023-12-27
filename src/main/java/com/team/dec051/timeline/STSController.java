@@ -39,6 +39,17 @@ public class STSController {
 		return td;
 	}
 	
+	
+	@RequestMapping(value="/getSummary", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public @ResponseBody String getSummary(HttpServletRequest req) {
+		
+		
+		String summary = sdao.sendTranscript(req);
+		System.out.println("summary :"+summary);
+		
+		return summary;
+	}
+	
 
 	
 

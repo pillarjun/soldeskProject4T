@@ -125,7 +125,6 @@ public class MemberDAO {
 	
 	public void logout(HttpServletRequest req) {
 		try {
-			req.getSession().setAttribute("loginMember", null);
 			req.getSession().invalidate();
 			req.setAttribute("r", "로그아웃 성공");
 		} catch (Exception e) {

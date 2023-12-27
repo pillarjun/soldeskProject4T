@@ -2,16 +2,20 @@ package com.team.dec051.timeline;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-//import java.nio.file.Files;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 //import java.nio.file.Path;
 //import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -71,8 +75,7 @@ public class STSDAO {
             
             String transcript = (String)jo.get("transcript");
             JSONArray words = (JSONArray)jo.get("words");
-            JSONArray topWords = (JSONArray)jo.get("top_words");
-                        
+            JSONArray topWords = (JSONArray)jo.get("topWords");
             
             td.setTranscript(transcript);
              
@@ -92,10 +95,7 @@ public class STSDAO {
             	WordAndTime wAndT = new WordAndTime();
             	JSONObject word = (JSONObject)words.get(i);
                 String w = (String) word.get("word");
-                String timeString = (String) word.get("startTime");
-                timeString = timeString.replace("s", "");
-                double doubleTime = Double.parseDouble(timeString);
-                Integer intTime = (int)Math.round(doubleTime);
+                int intTime = ((Long) word.get("start")).intValue();
                 
                 wAndT.setSerialNo(i);
                 wAndT.setWord(w);
@@ -118,23 +118,84 @@ public class STSDAO {
 			
 	}
 	
-//	public void deleteVideo(HttpServletRequest req) {
-//		
-//		HttpSession hs = req.getSession(false);
-//		String dir = Constants.getPersonalFolderDir();
-//		Member mb = (Member) hs.getAttribute("loginMember");
-//		System.out.println(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
-//			
-//		try {
-//			if(hs.getAttribute("UploadedFileName")!=null) {
-//				Path path = Paths.get(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
-//				Files.delete(path);
-//			}
-//				
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//	
-//	}
+	public void deleteVideo(HttpServletRequest req) {
+		
+		HttpSession hs = req.getSession(false);
+		String dir = Constants.getPersonalFolderDir();
+
+		try {
+			if(hs.getAttribute("loginMember")!=null) {
+				Member mb = (Member) hs.getAttribute("loginMember");
+				System.out.println(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
+				if(hs.getAttribute("UploadedFileName")!=null) {
+					Path path = Paths.get(dir+"/"+mb.getM_folder()+"/"+hs.getAttribute("UploadedFileName"));
+					Files.delete(path);
+					System.out.println("파일삭제됨");
+				}
+			}
+			
+				
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	
+	}
+	
+	
+	public String sendTranscript(HttpServletRequest req) {
+        System.out.println("send_transcript");
+
+        String transcript = req.getParameter("transcript");
+
+        try {
+            transcript = URLEncoder.encode(transcript, "UTF-8");
+
+            String url = "http://localhost:8000/myapp/summaryToSpring";
+            URL obj = new URL(url);
+            HttpURLConnection huc = (HttpURLConnection) obj.openConnection();
+
+            // POST 요청 설정
+            huc.setRequestMethod("POST");
+            huc.setDoOutput(true);
+
+            // 데이터 전송
+            OutputStream os = huc.getOutputStream();
+            try {
+                byte[] input = ("transcript=" + transcript).getBytes("UTF-8");
+                os.write(input, 0, input.length);
+            } finally {
+                os.close();
+            }
+
+            int responseCode = huc.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+
+            // 응답 읽기
+            BufferedReader in = new BufferedReader(new InputStreamReader(huc.getInputStream()));
+            try {
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                String res = response.toString();
+                JSONParser parser = new JSONParser();
+                Object ob = parser.parse(res);
+                JSONObject jo = (JSONObject)ob;
+                
+                String result = (String) jo.get("summary");
+
+                return result;
+            } finally {
+                in.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "error!";
+    }
 	
 }//class end

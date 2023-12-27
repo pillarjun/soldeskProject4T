@@ -9,6 +9,8 @@
 <script  type="text/javascript"  charset="utf-8">  
 </script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
+<script type="text/javascript" src="resources/js/notice/replyvalid.js"></script>
+<link rel="stylesheet" href="resources/css/notice/index.css">
 </head>
 <body>
 	<table id="siteLoginArea">
@@ -57,9 +59,10 @@
 					</a>
 				</c:when>
 					<c:otherwise>
-						<a id="infoBtn" href="member.info.go">
-							회원정보
-						</a>
+						<a id="infoBtn" href="member.info.go" onclick="return pwcheck();">
+	                  		<input id="nb_pw" type="hidden" value="${sessionScope.loginMember.m_pw }" readonly="readonly">
+	                    	 회원정보
+	                    </a>
 					</c:otherwise>
 				</c:choose>
 			</td>

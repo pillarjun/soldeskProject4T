@@ -8,9 +8,11 @@
 <title>Library Second</title>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/library.js"></script>
-<link rel="stylesheet" href="resources/css/library.css" type="text/css">
+<link rel="stylesheet" href="resources/css/temp.css">
 </head>
 <body>
+
+<button id="copyBtn">복사</button>
 
 <table>
 	<tr>
@@ -26,14 +28,13 @@
 		</td>
 		
 		<!-- 결과창 -->
-		<td rowspan="8">
-			<ul class="sortableList">
+		<td rowspan="8" id="libraryAll">
+			<ul class="sortableList" id="libraryAllList">
       			<li class="item" draggable="true">
      			   <div class="details">
 						<p id="libraryFinishContentAll" >
 						<!-- [영상 설명] -->
-						<br>
-						<pre id="libraryFinishContent">${readLibrary.libraryContent }</pre>
+						<a id="libraryFinishContent" style="white-space:pre-wrap">${libraryContent }</a>
 						</p>
 					</div>
        				<i class="uil uil-draggabledots"></i>
@@ -42,8 +43,7 @@
         			<div class="details">
 						<p id="libraryFinishNoticeAll" class="libraryFinish">
 						<!-- [문의] -->
-						<br>
-						<pre id="libraryFinishNotice">${readLibrary.libraryNotice }</pre>
+						<a id="libraryFinishNotice" style="white-space:pre-wrap">${libraryNotice }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -52,8 +52,7 @@
         			<div class="details">
 						<p id="libraryFinishBgmAll" class="libraryFinish">
 						<!-- [bgm출처] -->
-						<br>
-						<pre id="libraryFinishBgm">${readLibrary.libraryBgm }</pre>
+						<a id="libraryFinishBgm" style="white-space:pre-wrap">${libraryBgm }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -62,8 +61,7 @@
         			<div class="details">
 						<p id="libraryFinishPhotoAll" class="libraryFinish">
 						<!-- [사진출처] -->
-						<br>
-						<pre id="libraryFinishPhoto">${readLibrary.libraryPhoto }</pre>
+						<a id="libraryFinishPhoto" style="white-space:pre-wrap">${libraryPhoto }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -72,8 +70,7 @@
         			<div class="details">
 						<p id="libraryFinishChannelAll" class="libraryFinish">
 						<!-- [채널 더 알아보기] -->
-						<br>
-						<pre id="libraryFinishChannel">${readLibrary.libraryChannel }</pre>
+						<a id="libraryFinishChannel" style="white-space:pre-wrap">${libraryChannel }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -82,8 +79,7 @@
         			<div class="details">
 						<p id="libraryFinishEventAll" class="libraryFinish">
 						<!-- [이벤트] -->
-						<br>
-						<pre id="libraryFinishEvent">${libraryEvent }</pre>
+						<a id="libraryFinishEvent" style="white-space:pre-wrap">${libraryEvent }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -92,8 +88,7 @@
         			<div class="details">
 						<p id="libraryFinishTagAll" class="libraryFinish">
 						<!-- [해시태그] -->
-						<br>
-						<pre id="libraryFinishTag">${libraryTag }</pre>
+						<a id="libraryFinishTag" style="white-space:pre-wrap">${libraryTag }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -102,8 +97,7 @@
         			<div class="details">
 						<p id="libraryFinishEtcAll" class="libraryFinish">
 						<!-- [미분류] -->
-						<br>
-						<pre id="libraryFinishEtc">${libraryEtc }</pre>
+						<a id="libraryFinishEtc" style="white-space:pre-wrap">${libraryEtc }</a>
 						</p>
 					</div>
         			<i class="uil uil-draggabledots"></i>
@@ -168,7 +162,6 @@
 		</td>
 	</tr>
 </table>
-
 
 </body>
 </html>

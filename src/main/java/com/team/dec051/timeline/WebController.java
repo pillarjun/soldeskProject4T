@@ -62,6 +62,7 @@ public class WebController {
 
         // Content-Type 헤더 설정 (예: 비디오 파일의 MIME 타입)
         response.setContentType("video/mp4");
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Accept-Ranges", "bytes");
 
         long fileSize = Files.size(filePath);

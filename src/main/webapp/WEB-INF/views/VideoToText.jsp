@@ -40,12 +40,11 @@
 
 <hr>
 
-
-
+<% long currentTimestamp = System.currentTimeMillis();%>
 <c:choose>
 	<c:when test="${sessionScope.UploadedFileName != null }">
-		<video width="640" height="480" class="video-js vjs-default-skin" id="userVideo">
-    		<source src="videos" type="video/mp4">
+		<video width="640" height="480" class="video-js vjs-default-skin" id="userVideo" >
+    		<source src="videos?${sessionScope.UploadedFileName }" type="video/mp4">
 		</video>
 			<button id="getTextData">분석하기</button>
 	</c:when>
@@ -75,7 +74,8 @@
 	</tr>
 </table>
 
-
+<input id=transcript type="hidden">
+<button id="getSummary">요약하기</button>
 
 
 

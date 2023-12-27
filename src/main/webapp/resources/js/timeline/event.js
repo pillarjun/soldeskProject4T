@@ -5,24 +5,31 @@ $(document).ready(()=>{
 	var token = $("#token").val();
 	
 	function showLoadingScreen() {
-		// 로딩 화면 표시
 		$('#loading-overlay').show();
 	}
 
 	function hideLoadingScreen() {
-		// 로딩 화면 숨김
 		$('#loading-overlay').hide();
 	}
 	
 	function showTextArea() {
-	  $('#vtt_textArea').show();
+	    $('#vtt_textArea').show();
 	}
 
 	function hideTextArea() {
-	  $('#vtt_textArea').hide();
+	    $('#vtt_textArea').hide();
+	}
+	
+	function showSummaryButton() {
+		$('#getSummary').show();
+	}
+
+	function hideSummaryButton() {
+		$('#getSummary').hide();
 	}
 	
 	hideTextArea();
+	hideSummaryButton();
 	
 	$("#getTextData").click(function(){
 		showLoadingScreen();
@@ -42,6 +49,8 @@ $(document).ready(()=>{
 				var topWords = res.topWords;
 				var wat = res.wat;
 				var watLen = wat.length;
+				console.log(transcript);
+				$("#transcript").attr("value",transcript);
 				
 				var timeline = $("#timeLine");
 				for(var i in wat){
@@ -69,6 +78,8 @@ $(document).ready(()=>{
 			        });
 			    });
 				
+				showSummaryButton();
+				
 			},
 			error:function(){
 				console.log("실패")
@@ -79,6 +90,30 @@ $(document).ready(()=>{
 	});
 	
 	
+	$("#getSummary").click(function(){
+		showLoadingScreen();
+//		hideSummaryButton();
+		$.ajax({
+			url:"getSummary",
+			method:"POST",
+			data:{transcript:$("#transcript").val()},
+			complete:function(){
+				hideLoadingScreen();
+			},
+			success:function(summary){
+		        console.log("Summary:", summary);
+		        $("#vtt_textArea").val(function (index,value) {
+		            return value + "\n" + summary;
+		        });
+
+			},
+			error:function(jqXHR, textStatus, errorThrown){
+				console.log("요약 불가");
+				console.log("AJAX Error:", textStatus, errorThrown);
+				showSummaryButton();
+			},
+		});
+	});
 
 
     var player = videojs('userVideo',{
