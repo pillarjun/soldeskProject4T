@@ -11,63 +11,60 @@
 <script type="text/javascript" src="resources/js/timeline/event.js"></script>
 <script type="text/javascript" src="resources/js/timeline/submitValidation.js"></script>
 <link rel="stylesheet" href="resources/css/timeline/loading.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/timeline/VideoToText.css?after" rel="stylesheet">
 <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
 <script src="https://unpkg.com/video.js/dist/video.js"></script>
-<style>
-#timeLine a {
-	background:  linear-gradient(to right, rgba(255,255,255,0) 50%, #f3be00 50%);
-	background-size: 200%;
-	transition: .25s;
-	cursor:pointer;
-}
-#timeLine a:hover {
-	background-position: -100% 0;
-}
-</style>
 </head>
 <body>
 
-
 <input id="token" value="${sessionScope.newToken }" type="hidden">
 
-<hr>
-
+<div class="Box">
+<div class="Box1">
+<table id="videoT">
+	<tr>
+		<td>
 <form action="upload" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
     <input type="file" id="fileInput" name="file" accept="video/*">
     <input type="hidden" name="token" value="${sessionScope.newToken }" >
-    <button type="submit">Upload Video</button>
+    <br>
+    <button id="UploadBtn" class="button btnPush btnRed" type="submit">Upload Video</button>
 </form>
-
-<hr>
-
-<% long currentTimestamp = System.currentTimeMillis();%>
-<c:choose>
-	<c:when test="${sessionScope.UploadedFileName != null }">
-		<video width="640" height="480" class="video-js vjs-default-skin" id="userVideo" >
-    		<source src="videos?${sessionScope.UploadedFileName }" type="video/mp4">
-		</video>
-			<button id="getTextData">분석하기</button>
-	</c:when>
-</c:choose>
-
-<table>
+			</td>
+		</tr>
+		<tr>
+			<td height="60px" align="left">
+				<div id="loading-overlay">
+					<div class="loading-spinner">
+					</div>
+					 <a id="loading-message">이 작업은 조금 오래 걸릴 수 있습니다. 기다려주세요...</a>
+				</div>
+		</td>
+	</tr>
 	<tr>
 		<td>
-			<div id="loading-overlay">
-			  <div class="loading-spinner"></div>
-			  <p id="loading-message">이 작업은 조금 오래 걸릴 수 있습니다. 기다려주세요...</p>
-			</div>
+			<c:choose>
+				<c:when test="${sessionScope.UploadedFileName != null }">
+					<video width="480" height="320" class="video-js vjs-default-skin" id="userVideo" controls>
+			    		<source src="videos?${sessionScope.UploadedFileName}" type="video/mp4">
+					</video>
+						<button id="getTextData" class="button btnPush btnRed">분석하기</button>
+				</c:when>
+			</c:choose>
 		</td>
 	</tr>
 </table>
 
+</div>
 
-<hr>
+<div class="Box2">
 
 <table id="contentT">
 	<tr>
-			<td id="topWords"></td>
-			<td id="ta"><textarea id="vtt_textArea"></textarea></td>
+		<td id="topWords"></td>
+	</tr>
+	<tr>
+		<td id="ta"><textarea id="vtt_textArea" ></textarea></td>
 	</tr>
 	<tr>
 		<td colspan=2 id="timeLine"></td>
@@ -75,9 +72,12 @@
 </table>
 
 <input id=transcript type="hidden">
-<button id="getSummary">요약하기</button>
+<button id="getSummary" class="button btnPush btnRed" >요약하기</button>
 
 
+</div>
+</div>
 
 </body>
+
 </html>

@@ -7,17 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Signup</title>
-<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/signup.css?after" rel="stylesheet">
 <script type="text/javascript">
 $(function() {
 	$('#pwChk').blur(function() {
 		const inputpwChk = $(this).val();
 		const inputpw = $('#pw').val();
 		const $resultMsg = $('#pwCheckMessage');
-		
-		console.log("inputpwChk"+inputpwChk);
-		console.log("inputpw"+inputpw);
-		
 		if(inputpw === inputpwChk){
 			$resultMsg.html('비밀번호 일치');
 			$resultMsg.css('color','green');
@@ -69,34 +65,36 @@ $(function () {
 });
 </script>
 </head>
-<body>
+<body class="signupBody">
 <form action="member.signup" method="post" enctype="multipart/form-data">
+	<div class="whiteBack">
+		<a id="back" onclick="history.go(-1)">◁ 회원가입</a>
 		<table id="signupTbl">
 			<tr>
 				<td colspan="2">
-					<input id="signupId" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus" maxlength="10" class="i1">
+					<input id="signupId" class="signTblInput" name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus">
 					<div id="msg"></div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input id="pw" name="m_pw" placeholder="Password" autocomplete="off" maxlength="10" type="password" class="i1">
+					<input id="pw" name="m_pw" class="signTblInput" placeholder="Password" autocomplete="off" maxlength="10">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input id="pwChk" name="m_pwChk"placeholder="Password Check" autocomplete="off" type="password" class="i1">
+					<input id="pwChk" name="m_pwChk" class="signTblInput" placeholder="Password Check" autocomplete="off" type="password">
 					<span id="pwCheckMessage"></span>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input name="m_name" placeholder="User Name" autocomplete="off" class="i1">
+					<input name="m_name" class="signTblInput" placeholder="User Name" autocomplete="off">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="userEmail1" id="userEmail1" placeholder="Email" >
+					<input type="text" name="userEmail1" id="userEmail1" placeholder="Email">
 					<select name="userEmail2" id="userEmail2" >
 						<option>@naver.com</option>
 						<option>@daum.net</option>
@@ -104,12 +102,9 @@ $(function () {
 						<option>@hanmail.com</option>
 					</select>
 					<input type="hidden" name="m_email" value="">
-					<button type="button" id="mailCheckBtn">본인인증</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input class="mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
+					<br>
+					<button type="button" id="mailCheckBtn" >본인인증</button>
+					<input class="form-control mailCheckInput" id="mailCheckInput" placeholder="인증번호 6자리"  disabled="disabled" maxlength="6">
 					<span id="mailCheckMessage"></span>
 				</td>
 			</tr>
@@ -117,18 +112,21 @@ $(function () {
 				<td>
 					<div class="fileBox">
 						<input class="uploadName" value="Profile Pic" placeholder="Profile Pic">
-						<label for="m_photo">파일찾기</label>					
+						<br>
+						<label id="phototext" for="m_photo">파일찾기</label>		
 						<input id="uploadPhoto" name="m_photo" type="file">
 					</div>
 				</td>
 			</tr>
+		</table>
+		<table id="signupTblBtn">
 			<tr>
 				<td align="center" colspan="2">
-					<button id="signCheckBtn" disabled="disabled">Sign Up</button>
+					<button id="signCheckBtn" class="button btnPush btnRed" disabled="disabled">회원가입하기</button>
 				</td>
 			</tr>
 		</table>
-	</form>
+	</div>
+</form>
 </body>
 </html>
-

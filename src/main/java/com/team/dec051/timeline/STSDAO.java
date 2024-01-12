@@ -96,7 +96,7 @@ public class STSDAO {
             	JSONObject word = (JSONObject)words.get(i);
                 String w = (String) word.get("word");
                 int intTime = ((Long) word.get("start")).intValue();
-                
+                                
                 wAndT.setSerialNo(i);
                 wAndT.setWord(w);
                 wAndT.setSecond(intTime);

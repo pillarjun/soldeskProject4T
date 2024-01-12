@@ -5,41 +5,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/login.css?after" rel="stylesheet">
 </head>
-<body>
+<body class="loginBody">
 	<form action="member.login" method="post">
+	<div class="whiteBack">
+		<a id="back" onclick="history.go(-1)">◁ 로그인</a>
+
 		<table id="loginTbl">
-			<tr>
+			<tr class="inputText">
 				<td>
 					<input name="m_id" placeholder="ID" autocomplete="off" autofocus="autofocus"> 
 				</td>
 			</tr>
-			<tr>
+			<tr class="inputText">
 				<td>
 					<input name="m_pw" placeholder="Password" autocomplete="off" type="password">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<button>로그인</button>
+					<button id="loginBtn" class="button btnPush btnRed" onclick="login();">로그인하기</button>
 				</td>
 			</tr>
-	</form>
-	<form action="member.idsearch" method="get">
+			</form>
 			<tr>
-				<td>
-					<button>아이디 찾기</button>
+				<td align="center">
+					<div class="findBtns">
+						<form action="member.idsearch" method="get">
+									<button id="findId">아이디 찾기</button>
+						</form>
+						<form action="member.pwsearch" method="get">
+									<button id="findPw">비밀번호 찾기</button>
+						</form>
+					</div>
 				</td>
-			</tr>
-	</form>
-	<form action="member.pwsearch" method="get">
-			<tr>
-				<td>
-					<button>비밀번호 찾기</button>
-				</td>
-			</tr>
-	</form>
 			</tr>
 		</table>
+	</div>
 </body>
 </html>

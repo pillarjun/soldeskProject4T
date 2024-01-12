@@ -15,9 +15,17 @@ function selChange() {
 	location.href="board.search?searchType=${pagingSearch.searchType}&keyword=${pagingSearch.keyword}&nowPage=${pagingSearch.nowPage}&cntPerPage="+sel;
 };
 </script>
+
+<style>
+	#homeTable {
+	width: 1000px;
+}
+</style>
+
 </head>
 <body>
 
+<div class="Box">
 
 <!-- 게시판 행 갯수 지정 -->
 
@@ -108,7 +116,6 @@ function selChange() {
 
 <form action="board.search" name="search-form">
 	<select name="searchType" class="type-box" >
-		<option value="">Search Type</option>
 		<option value="nb_title">Title</option>
 		<option value="nb_id">ID</option>
 		<option value="nb_content">Content</option>
@@ -118,6 +125,6 @@ function selChange() {
 	<input type="submit" class="searchBtn" onclick="return searchKeyword();"
 	value="검색" >
 </form>
-
+</div>
 </body>
 </html>

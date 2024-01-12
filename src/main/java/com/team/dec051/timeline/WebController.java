@@ -39,7 +39,8 @@ public class WebController {
     		System.out.println("새로고침에 의한 요청입니다.");
     	}
     	
-        return "VideoToText";
+    	req.setAttribute("cp", "VideoToText.jsp");
+        return "index";
     }
     
 

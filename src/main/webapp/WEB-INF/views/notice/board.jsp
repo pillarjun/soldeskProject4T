@@ -18,6 +18,8 @@ function selChange() {
 </head>
 <body>
 
+<div class="Box">
+
 <!-- 게시판 행 갯수 지정 -->
 
 <table id="selChangeTable">
@@ -116,6 +118,6 @@ function selChange() {
 	<input type="submit" class="searchBtn" onclick="return searchKeyword();"
 	value="검색" >
 </form>
-
+</div>
 </body>
 </html>

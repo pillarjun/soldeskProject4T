@@ -1,21 +1,30 @@
 @charset "UTF-8";
-#selChangeTable{
-	width: 100%
+
+
+
+.Box {
+	margin-top:50px;
 }
+
+#selChangeTable{
+	width: 1000px;
+}
+
 .selChange{
 	float: right;
+	border-radius:5px;
+	padding:3px;
 }
 .onerow {
 	padding: 16px;
 	color: white;
 	text-align: center;
-	background-color: gray;
+	background-color: rgb(213, 56, 56);
 	border-bottom: 1px solid #ddd;
 }
 #homeTable {
 	border-collapse: collapse;
 	width: 100%;
-	margin: 1rem auto;
 	background-color: white;
 }
 #homeTable td {
@@ -55,15 +64,41 @@
 .insertBtnCell {
 	float: right;
 	color: white;
-	background-color: gray;
+	background-color: rgb(168, 43, 43);
 	border-radius: 10px;
 }
 #insertBtn{
 	text-decoration: none;
 	color: inherit;
+	padding:5px;
 }
 .insertBtnCell:hover {
 	color: white;
 	background-color: darkred;
     transition: 0.3s;
 }
+
+.type-box {
+	border:1px solid gray;
+	border-radius:10px;
+}
+
+.searchBox {
+	border:1px solid gray;
+	border-radius:5px;
+}
+
+.searchBtn {
+	border:none;
+	border-radius:10px;
+	background-color:rgb(168, 43, 43);
+	padding:3px;
+	color:white;
+	font-family: 'IBM Plex Sans KR';
+	width:50px;
+}
+
+.searchBtn:hover {
+	background-color:darkred;
+}
+

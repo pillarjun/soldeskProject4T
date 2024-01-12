@@ -6,25 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Index</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/notice/index.css?after" rel="stylesheet">
+<script type="text/javascript" src="resources/js/notice/replyvalid.js"></script>
 <script  type="text/javascript"  charset="utf-8">  
 </script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<script type="text/javascript" src="resources/js/notice/replyvalid.js"></script>
-<link rel="stylesheet" href="resources/css/notice/index.css">
 </head>
-<body>
+<body class="indexBody">
+	<div class="borderLine">
 	<table id="siteLoginArea">
 		<tr>
 			<td>
-				<c:choose>
-					<c:when test="${sessionScope.loginMember.m_id != null }">
-						<a id="timelineBtn" href="timeline.go">
-						영상 분석
-						</a>
-					</c:when>
-				</c:choose>
+				<a id="homeBtn" href="home.go">
+					홈
+				</a>
 			</td>
 		</tr>
+		<tr>
 		<tr>
 			<td>
 				<a id="noticeBtn" href="noticeBoard.go">
@@ -49,6 +47,9 @@
 			</td>
 		</tr>
 	</table>
+	
+	<div class="fixwindow">
+	
 	<table id="siteSignupArea">
 		<tr>
 			<td>
@@ -59,25 +60,17 @@
 					</a>
 				</c:when>
 					<c:otherwise>
-						<a id="infoBtn" href="member.info.go" onclick="return pwcheck();">
-	                  		<input id="nb_pw" type="hidden" value="${sessionScope.loginMember.m_pw }" readonly="readonly">
-	                    	 회원정보
-	                    </a>
+					<a id="infoBtn" href="member.info.go" onclick="return pwcheck();">
+	                  <input id="nb_pw" type="hidden" value="${sessionScope.loginMember.m_pw }" readonly="readonly">
+	                     	회원정보
+	                  </a>
 					</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
 	</table>
-	
-	${r }
-	
-	<table id="siteLibraryArea">
-		<tr>
-			<td>
-				<a href="libraryfirst.go">유튜브 도우미</a>
-			</td>
-		</tr>
-	</table>
+	</div>
+	</div>
 	<table id="siteContextArea">
 		<tr>
 			<td align="center">

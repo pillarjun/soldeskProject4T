@@ -1,7 +1,31 @@
 @charset "UTF-8";
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+
+@font-face {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  src: url();
+}
+.Box {
+	margin-top:50px;
+}
+
+.updateviewTable input {
+	font-family: 'IBM Plex Sans KR';
+	border:1px solid gray;
+	border-radius:5px;
+}
+
+.updateviewTable textarea {
+	font-family: 'IBM Plex Sans KR';
+	border:1px solid gray;
+	border-radius:5px;
+	resize:none;
+}
+
 .updateviewTable {
 	border-collapse: collapse;
-	width: 100%;
+	width: 1000px;
 	margin: 1rem auto;
 	background-color: white;
 }
@@ -9,6 +33,18 @@
 	padding: 8px;
 	border-bottom: 1px solid #ddd;
 }
+
+#updateBtn {
+	color: white;
+	background-color: rgb(168, 43, 43);
+	border:none;
+	border-radius:10px;
+	padding:5px;
+    transition: 0.3s;
+    font-family: 'IBM Plex Sans KR';
+    font-size: 15px;
+}
+
 #updateBtn:hover  {
 	color: white;
 	background-color: darkred;

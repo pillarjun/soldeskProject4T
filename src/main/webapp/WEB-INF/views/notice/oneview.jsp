@@ -14,6 +14,8 @@
 </head>
 <body>
 
+<div class="Box">
+
 <!-- 게시물 하나에 대한 디테일 : 제목, 아이디, 본문 -->
 
 <table class="oneviewTable">
@@ -66,7 +68,7 @@
 
 <!--  댓글 내용란 -->
 
-<table class="oneviewTable">
+<table class="oneviewTable" id="com">
 	<c:forEach var="r" items="${ replyAll }" >
 	<tr>
 		<form name="oneform" action="reply.delete"  method="post">
@@ -111,5 +113,6 @@
 		</tr>
 	</form>
 </table>
+</div>
 </body>
 </html>

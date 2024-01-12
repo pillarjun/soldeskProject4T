@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div class="Box">
+
 <!-- 글 수정 양식 -->
 
 <form action="board.update" method="post">
@@ -43,5 +45,6 @@
 	</tr>
 </table>
 </form>
+</div>
 </body>
 </html>

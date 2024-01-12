@@ -15,7 +15,7 @@ $(function() {
 	    let siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
 	    //드래깅중인 항목이 배치되어야 하는 형제 항목 찾기.
 	    let nextSibling = siblings.find(sibling => {
-	    	 return e.clientY <= sibling.offsetTop + sibling.offsetHeight * 2;
+	        return e.clientY <= sibling.offsetTop + sibling.offsetHeight * 0.2;
 	    });
 	    // 현재 드래깅중인 요소를 배치되어야 하는 요소 형제항목 앞에 추가
 	    sortableList.insertBefore(draggingItem, nextSibling);
@@ -26,40 +26,64 @@ $(function() {
 		if(this.checked){
 			$("#libraryContent").prop("readonly", false);
 		}
+		if(this.checked){
+			$("#libraryContent").focus();	
+		}
 	});
 	$("#noticeWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryNotice").prop("readonly", false);
+		}
+		if(this.checked){
+			$("#libraryNotice").focus();	
 		}
 	});
 	$("#bgmWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryBgm").prop("readonly", false);
 		}
+		if(this.checked){
+			$("#libraryBgm").focus();	
+		}
 	});
 	$("#photoWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryPhoto").prop("readonly", false);
+		}
+		if(this.checked){
+			$("#libraryPhoto").focus();	
 		}
 	});
 	$("#channelWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryChannel").prop("readonly", false);
 		}
+		if(this.checked){
+			$("#libraryChannel").focus();	
+		}
 	});
 	$("#eventWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryEvent").prop("readonly", false);
+		}
+		if(this.checked){
+			$("#libraryEvent").focus();	
 		}
 	});
 	$("#tagWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryTag").prop("readonly", false);
 		}
+		if(this.checked){
+			$("#libraryTag").focus();	
+		}
 	});
 	$("#etcWriteBtn").click(function(){
 		if(this.checked){
 			$("#libraryEtc").prop("readonly", false);
+		}
+		if(this.checked){
+			$("#libraryEtc").focus();	
 		}
 	});
 
@@ -187,20 +211,29 @@ $(function() {
 	
 });
 
+function objectToString( obj ){
+    var str = "";
+    for( var i in obj ){
+        str += obj[i]
+    }
+    str = str.substring(1, str.length).replace(/\t/g, "").replace(/\n\n\n/g,"\n");
+    return str;
+}
 
 $(function () {
     $('#copyBtn').click(function () {
  
       var copyText = document.getElementById("libraryAllList");
-      var textArea = document.createElement("textarea");
-      var a = copyText.textContent
+      var copyTextArea = document.createElement("textarea");
       
-      textArea.value = copyText.textContent;//textarea에 텍스트 입력
-      document.body.appendChild(textArea);//body에 textarea 추가
+      var copyText2 = objectToString(copyText.textContent);
       
-      textArea.select();
+      copyTextArea.value = copyText2;//textarea에 텍스트 입력
+      document.body.appendChild(copyTextArea);//body에 textarea 추가
+    	  
+      copyTextArea.select();
       document.execCommand("Copy");
-      textArea.remove();
+      copyTextArea.remove();
       
       alert("복사되었습니다.");
       

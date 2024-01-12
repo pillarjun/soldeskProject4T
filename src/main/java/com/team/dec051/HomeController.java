@@ -15,6 +15,11 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/home.go", method = RequestMethod.GET)
+	public String home() {
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/index.go", method = RequestMethod.GET)
 	public String home2(HttpServletRequest req) {
 		return home(req);

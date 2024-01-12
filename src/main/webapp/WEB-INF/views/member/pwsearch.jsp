@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/pwsearch.css?after" rel="stylesheet">
 <script type="text/javascript">
 $(function() {
 	$('#pwMailCheckBtn').click(function() {
@@ -48,7 +49,9 @@ $(function() {
 </script>
 </head>
 <body>
-	<table>
+<div class="whiteBack">
+<a id="back" onclick="history.go(-1)">◁ 비밀번호 찾기</a>
+	<table id="pwsearchTbl">
 		<tr>
 			<td>
 				<input type="text" name="pwUserEmail1" id="pwUserEmail1" placeholder="Email" >
@@ -58,12 +61,12 @@ $(function() {
 					<option>@gmail.com</option>
 					<option>@hanmail.com</option>
 				</select>
-				<button type="button" id="pwMailCheckBtn">본인인증</button>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
+				<button type="button" id="pwMailCheckBtn">본인인증</button>
+				<input id="pwMailCheckInput" class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 				<span id="pwMailCheckMessage"></span>
 			</td>
 		</tr>
@@ -71,14 +74,15 @@ $(function() {
 			<form action="member.pwsearchOk" method="post">
 		<tr>
 			<td>
-				<input type="text" name="m_id" placeholder="ID">
+				<input id="pwCheckId" type="text" name="m_id" placeholder="ID">
 			</td>
 		</tr>
 			<td>
-				<button id="pwCheckBtn" disabled="disabled" >PW 확인</button>
+				<button id="pwCheckBtn" class="button btnPush btnRed" disabled="disabled" >PW 확인</button>
 			</td>
 			</form>
 		</tr>
 	</table>
+</div>
 </body>
 </html>

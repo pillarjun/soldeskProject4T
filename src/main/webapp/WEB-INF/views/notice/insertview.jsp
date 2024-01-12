@@ -14,6 +14,7 @@
 <body>
 
 <!-- 글 작성 양식 -->
+<div class="Box">
 
 <form name="insertBaordForm" action="board.insert"  method="post">
 <table id="insertviewTable">
@@ -27,7 +28,7 @@
 	</tr>
 	<tr>
 		<td colspan="3">
-			<input name="nb_title" id="nb_title.insert" autocomplete="off" placeholder="Title">
+			<input name="nb_title" class="wide" id="nb_title.insert" autocomplete="off" placeholder="Title">
 		</td>
 	</tr>
 	<tr>
@@ -42,5 +43,6 @@
 	</tr>
 </table>
 </form>
+</div>
 </body>
 </html>

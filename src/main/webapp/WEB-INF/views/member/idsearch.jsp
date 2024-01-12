@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/idsearch.css?after" rel="stylesheet">
 <script type="text/javascript">
 $(function() {
 	$('#idMailCheckBtn').click(function() {
@@ -47,7 +48,9 @@ $(function() {
 </script>
 </head>
 <body>
-	<table>
+<div class="whiteBack">
+<a id="back" onclick="history.go(-1)">◁ 아이디 찾기</a>
+	<table id="idsearchTbl">
 		<tr>
 			<td>
 				<input type="text" name="idUserEmail1" id="idUserEmail1" placeholder="Email" >
@@ -57,12 +60,12 @@ $(function() {
 					<option>@gmail.com</option>
 					<option>@hanmail.com</option>
 				</select>
-				<button type="button" id="idMailCheckBtn">본인인증</button>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<input class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
+				<button type="button" id="idMailCheckBtn">본인인증</button>
+				<input id="idMailCheckInput" class="form-control mailCheckInput" placeholder="인증번호 6자리" disabled="disabled" maxlength="6">
 				<span id="idMailCheckMessage"></span>
 			</td>
 		</tr>
@@ -70,10 +73,11 @@ $(function() {
 			<form action="member.idsearchOk" method="post">
 			<td>
 				<input type="hidden" name="m_email" value="">
-				<button id="idCheckBtn" disabled="disabled" >ID 확인</button>
+				<button id="idCheckBtn" class="button btnPush btnRed" disabled="disabled" >ID 확인</button>
 			</td>
 			</form>
 		</tr>
 	</table>
+</div>
 </body>
 </html>

@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/pwsearchok.css?after" rel="stylesheet">
 </head>
 <body>
-<table border="1">
+<div class="whiteBack">
+<a id="back" onclick="history.go(-1)">◁ 비밀번호 찾기</a>
+<table id="pwsearchokTbl">
 	<tr>
-		<td>
+		<th>
 			비밀번호
-		</td>
+		</th>
 	</tr>
 	<c:forEach var="Info" items="${getInfoPw }">
 	<tr>
@@ -22,5 +25,6 @@
 	</tr>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

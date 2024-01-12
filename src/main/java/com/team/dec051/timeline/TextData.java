@@ -12,12 +12,16 @@ public class TextData {
 	public TextData() {
 	}
 
+	
+
 	public TextData(String transcript, ArrayList<String> topWords, ArrayList<WordAndTime> wat) {
 		super();
 		this.transcript = transcript;
 		TopWords = topWords;
 		this.wat = wat;
 	}
+
+
 
 	public String getTranscript() {
 		return transcript;

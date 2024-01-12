@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 목록</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/idsearchok.css?after" rel="stylesheet">
 </head>
 <body>
-<table border="1">
+<div class="whiteBack">
+<a id="back" onclick="history.go(-1)">◁ 아이디 목록</a>
+<table id="idsearchokTbl">
 	<tr>
-		<td>
-			아이디 목록
-		</td>
+		<th>
+			해당 계정의 아이디 목록
+		</th>
 	</tr>
 	<c:forEach var="Info" items="${getInfoId }">
 	<tr>
@@ -22,5 +25,6 @@
 	</tr>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

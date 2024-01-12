@@ -21,8 +21,9 @@ public class STSController {
 	
 	
 	@RequestMapping(value="/timeline.go", method=RequestMethod.GET)
-	public String goToTimeline() {
-		return "VideoToText";
+	public String goToTimeline(HttpServletRequest req) {
+		req.setAttribute("cp", "VideoToText.jsp");
+		return "index";
 	}
 	
 	

@@ -4,6 +4,9 @@ $(document).ready(()=>{
 	console.log("document ready");
 	var token = $("#token").val();
 	
+	var player = videojs('userVideo');
+
+	
 	function showLoadingScreen() {
 		$('#loading-overlay').show();
 	}
@@ -31,7 +34,8 @@ $(document).ready(()=>{
 	hideTextArea();
 	hideSummaryButton();
 	
-	$("#getTextData").click(function(){
+	$("#getTextData").click(function(event){
+		event.preventDefault();
 		showLoadingScreen();
 		$.ajax({
 			url:"sendToPython",
@@ -39,7 +43,11 @@ $(document).ready(()=>{
 			data:{"token":token},
 			complete:function(){
 				console.log("완료")
+				player.pause();
+				player.currentTime(0);
 				hideLoadingScreen();
+				document.getElementById("contentT").style.display = "block";
+
 			},
 			success:function(res){
 				hideLoadingScreen();
@@ -48,7 +56,8 @@ $(document).ready(()=>{
 				var transcript = res.transcript;
 				var topWords = res.topWords;
 				var wat = res.wat;
-				var watLen = wat.length;
+
+				
 				console.log(transcript);
 				$("#transcript").attr("value",transcript);
 				
@@ -114,12 +123,20 @@ $(document).ready(()=>{
 			},
 		});
 	});
-
-
-    var player = videojs('userVideo',{
-    	controls:true
-    });
-
+	
+	$(document).on('click', '.word', function () {
+	    var secondValue = $(this).data('second');
+	    console.log(secondValue);
+	    var formattedTime = formatTime(secondValue);
+	    console.log(formattedTime);
+	    var w = $(this).text();
+	    
+	    $("#vtt_textArea").val(function (index, value) {
+	        return value + "\n" + formattedTime +" "+ w;
+	    });
+	    
+	    player.currentTime(secondValue);
+	});
 
 
 });//document.ready
@@ -132,20 +149,7 @@ function formatTime(seconds) {
 
 
 
-$(document).on('click', '.word', function () {
-	var player = videojs('userVideo');
-    var secondValue = $(this).data('second');
-    console.log(secondValue);
-    var formattedTime = formatTime(secondValue);
-    console.log(formattedTime);
-    var w = $(this).text();
-    
-    $("#vtt_textArea").val(function (index, value) {
-        return value + "\n" + formattedTime +" "+ w;
-    });
-    
-    player.currentTime(secondValue);
-});
+
 
 
 
