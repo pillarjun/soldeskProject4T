@@ -1,0 +1,189 @@
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+
+@font-face {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  src: url();
+}
+
+body {
+	/*background: linear-gradient(45deg, rgb(184, 90, 90), rgb(96, 0, 0) 90%);*/
+	height:100%;
+}
+
+.Box {
+	margin-left:0px;
+}
+
+.Box1 {
+	margin-left : 50px;
+}
+
+.Box2 {
+	position:absolute;
+	margin-top: -550px;
+	margin-left : 50px;
+	margin-bottom: 15px;
+}
+
+.uptxt {
+	display: inline;
+	
+}
+
+a#back {
+    font-family: 'IBM Plex Sans KR';
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    /*text-shadow:5px 5px 5px black;*/
+}
+
+p {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 17px;
+	color: black;
+	/*text-shadow:3px 3px 3px black;*/
+}
+
+.Box1 #fileInput {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 15px;
+	margin-top: 15px;
+	margin-right:170px;
+	color: black;
+}
+
+#userVideo {
+	z-index:1;
+	border-radius:20px;
+	margin-top:70px;
+}
+
+
+.recommendedTag {
+	border:none;
+	background-color:none;
+	color: blue;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+#vtt_textArea {
+	resize:none;
+	width:500px;
+	height:6em;
+	border:1px gray solid;
+	border-radius:10px;
+	margin-left: 50px;
+}
+
+#contentT {
+	border:1px gray solid;
+	border-radius:10px;
+	resize:none;
+	margin-left:540px;
+	width:600px;
+	height:550px;
+	background-color: rgb(235,235,235);
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 17px;
+	display:none;
+	overflow:scroll;
+}
+
+textarea {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 17px;
+}
+
+
+/* Upload Video, 분석하기, 요약하기 버튼 */
+
+.Box1 #getTextData {
+	position :absolute;
+	margin-top: 400px;
+	margin-left:-480px;
+}
+
+.Box2 #getSummary {
+	margin-left:600px;
+	margin-top: 7px;
+}
+
+.Box1 #loading-overlay {
+	margin-left:110px;
+	z-index: 2;
+}
+
+.Box1 .loading-spinner {
+	margin-left:110px;
+	z-index: 2;
+}
+
+.Box1 #loading-message {
+}
+
+.btn {
+    margin-top: 10px;
+    margin-left: -70px;
+    padding-bottom: 20px;
+}
+
+.pressButton {
+    position: absolute;
+    z-index: 2;
+    margin-top: -400px;
+    margin-left: 750px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  font-family: 'IBM Plex Sans KR';
+  color: black;
+}
+
+button.button {
+	display :inline;
+    position: relative;
+    float: left;
+    width: 480px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: large;
+    border-radius: 5px;
+    transition: all 0.2s ;
+    border: none;
+    background-color: none;
+  }
+  .btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .btnRed {
+    background: rgb(213, 56, 56);
+  }
+  .btnRed.btnPush {
+    box-shadow: 0px 5px 0px 0px #5a1308;
+  }
+  .btnRed.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #5a1308;
+  }
+
+
+#timeLine a {
+	background:  linear-gradient(to right, rgba(255,255,255,0) 50%, #f3be00 50%);
+	background-size: 200%;
+	transition: .25s;
+	cursor:pointer;
+}
+#timeLine a:hover {
+	background-position: -100% 0;
+}
+  

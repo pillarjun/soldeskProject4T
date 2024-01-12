@@ -1,0 +1,169 @@
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+
+@font-face {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  src: url();
+}
+
+/* 배경 설정 */
+body {
+    background-image: url('../../img/signLoginImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 하얀 배경 */
+.whiteBack {
+    width: 600px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 0 auto;
+    margin-top: 100px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-left: 50%;
+}
+
+/* idsearchTbl */
+#pwsearchTbl{
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-left: 80px;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.member-loginTbl {
+    margin: 10px;
+    display: center;
+}
+
+a#back {
+    font-family: 'IBM Plex Sans KR';
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    margin-left: -250px;
+    color: black;
+    position: absolute;
+}
+
+#pwUserEmail1, #pwMailCheckInput{
+    margin-bottom: 30px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 135px;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+}
+
+#pwCheckId {
+    margin-bottom: 30px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+}
+
+/* 본인인증 버튼 */
+#pwMailCheckBtn {
+	border: none;
+	border-radius: 50px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(213, 56, 56);
+    font-family: 'IBM Plex Sans KR';
+    font-size: 15px;
+    color: white;
+}
+
+#pwMailCheckBtn:hover {
+    background-color: rgb(168, 43, 43);
+}
+
+/* 이메일 주소 */
+#pwUserEmail2 {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    height: 25px;
+    background-color: rgb(249, 249, 249);
+    margin-bottom:20px;
+}
+
+/* 인증번호 6자리 */
+input #pwMailCheckInput {
+	position:relative;
+	margin-top: 50px;
+}
+
+/* 인증번호 일치 */
+#pwMailCheckMessage {
+	font-family: 'IBM Plex Sans KR';
+
+}
+
+/* ID 확인 버튼 */
+.btn {
+    margin-top: 10px;
+    margin-left: -70px;
+    padding-bottom: 20px;
+}
+
+.pressButton {
+    position: absolute;
+    z-index: 2;
+    margin-top: -400px;
+    margin-left: 750px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  font-family: 'IBM Plex Sans KR';
+  color: black;
+}
+
+button.button {
+    display: block;
+    position: relative;
+    float: left;
+    width: 400px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: large;
+    border-radius: 5px;
+    transition: all 0.2s ;
+    border: none;
+    background-color: none;
+  }
+  .btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .btnRed {
+    background: rgb(213, 56, 56);
+  }
+  .btnRed.btnPush {
+    box-shadow: 0px 5px 0px 0px #5a1308;
+  }
+  .btnRed.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #5a1308;
+  }

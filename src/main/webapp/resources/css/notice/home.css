@@ -1,0 +1,118 @@
+body {
+	background-image:url('../../img/MI.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@keyframes circleOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes circledrop {
+  0% {
+    opacity: 1;
+    font-size: 0;
+    top: 40%;
+  }
+  100% {
+    opacity: 0;
+    font-size: 8em;
+    top: -5%;
+  }
+}
+
+
+
+/* 유튜브 도우미 버튼 */
+#youtubeGuideBtn {
+	width:26%;
+	height:26%;
+	position: fixed;
+	top:48%;
+	left:21.8%;
+}
+
+#youtubeGuideBtn {
+  padding: 0;
+  z-index: 1;
+}
+
+#youtubeGuideBtn:hover {
+  color: rgba(155, 55, 55, 0.6);
+  -ms-animation: circleOpacity forwards 1s;
+  -moz-animation: circleOpacity forwards 1s;
+  -webkit-animation: circleOpacity forwards 1s;
+  animation: circleOpacity forwards 1s;
+}
+
+#youtubeGuideBtn:before, #youtubeGuideBtn:after {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  content: "◯";
+  display: block;
+  width: 100%;
+  font-size: 0px;
+  color: rgba(155, 55, 55, 0.6);
+  text-align: center;
+  z-index: -1;
+}
+
+#youtubeGuideBtn:before {
+  animation: circledrop 1s;
+  -ms-animation: circledrop 1s;
+  -moz-animation: circledrop 1s;
+  -webkit-animation: circledrop 1s;
+  animation-iteration-count: infinite;
+}
+
+
+/* 영상분석 버튼 효과 */
+#timelineBtn,#timelineFailBtn {
+	width:26%;
+	height:26%;
+	position: fixed;
+	top:48%;
+	left:50.3%;	
+}
+
+#timelineBtn,#timelineFailBtn {
+  padding: 0;
+  z-index: 1;
+}
+
+#timelineBtn:hover {
+  color: rgba(155, 55, 55, 0.6);
+  -ms-animation: circleOpacity forwards 1s;
+  -moz-animation: circleOpacity forwards 1s;
+  -webkit-animation: circleOpacity forwards 1s;
+  animation: circleOpacity forwards 1s;
+}
+
+#timelineBtn:before, #timelineBtn:after {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  content: "◯";
+  display: block;
+  width: 100%;
+  font-size: 0px;
+  color: rgba(155, 55, 55, 0.6);
+  text-align: center;
+  z-index: -1;
+}
+
+#timelineBtn:before {
+  animation: circledrop 1s;
+  -ms-animation: circledrop 1s;
+  -moz-animation: circledrop 1s;
+  -webkit-animation: circledrop 1s;
+  animation-iteration-count: infinite;
+}
+
+

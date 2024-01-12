@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+.sortableList {
+  width: 425px;
+  padding: 25px;
+  padding: 30px 25px 20px;
+  border-radius: 7px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.sortableList .item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+  padding: 10px 13px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: move;
+  background: #fff;
+}
+
+.item{
+  transition: all 0.2s ease-out;
+}
+.item i {
+  color: #474747;
+  font-size: 1.13rem;
+}
+.item.dragging {
+  opacity: 1;
+  transform: scale(1.05);
+}

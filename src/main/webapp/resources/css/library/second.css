@@ -1,0 +1,140 @@
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+
+@font-face {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  src: url();
+}
+
+
+/* 배경 설정 */
+body{
+    font-family: 'IBM Plex Sans KR';
+    background-color:white;
+    /*background: linear-gradient(45deg, rgb(184, 90, 90), rgb(96, 0, 0) 90%);*/
+}
+
+.BigWhite {
+
+}
+
+.BigBox{
+	margin-left : 5%;
+	padding-top: 50px;
+	width: 100%;
+
+}
+
+textarea {
+	width: 500px;
+    height: 50px;
+    border: 3px solid gray;
+    border-radius: 10px;
+    resize : none;
+    font-family: '나눔고딕';
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+tr td#direction{
+	padding-left:30px;
+	padding-right:30px;
+	
+}
+
+#noborder {
+	border :none;
+}
+
+.BigWhite input {
+	color: white;
+}
+
+a {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	border :none;
+}
+
+ul {
+	 width : 500px;
+	 border: 3px solid rgb(9, 6, 6);
+	 border-radius: 10px;
+	 background-color: white;
+	 font-family: '나눔고딕';
+}
+
+br {
+	margin-top: -10px;
+	margin-bottom: -10px;
+}
+
+input.listtxt[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  input.listtxt[type="checkbox"]:checked {
+    background: rgb(176, 23, 6);
+    border: none;
+  }
+  
+ input.editBtn[type="checkbox"] {
+    accent-color: red;
+  }
+
+/* 복붙 버튼*/
+#copyBtn {
+    border: none;
+    background: none;
+    margin-left: 50px;
+    margin-top: -480px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.sortableList {
+  width: 425px;
+  padding: 25px;
+  padding: 30px 25px 20px;
+  border-radius: 7px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.sortableList .item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+  padding: 10px 13px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: move;
+  background: #fff;
+}
+
+.item{
+  transition: all 0.2s ease-out;
+}
+.item i {
+  color: #474747;
+  font-size: 1.13rem;
+}
+.item.dragging {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.editBtn {
+	display: none;
+}
+input[type="checkbox"]+label {
+	margin-left:15px;
+    cursor: pointer;
+}
+
+

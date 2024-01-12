@@ -1,0 +1,126 @@
+/* 배경 설정 */
+body {
+  background-image: url('../../img/signLoginImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.info {
+  background-color: white;
+  border-left: solid rgb(93, 93, 93);
+  border-right: solid rgb(93, 93, 93);
+  width: fit-content;
+  padding: 100px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-left: 70%;
+  border-radius: 50px;
+}
+
+
+.info p{
+  color: gray;
+  font-size: small;
+  margin-bottom: -1px;
+  margin-left: 85px;
+  text-align: left;
+}
+
+/* 뒤로가기(회원정보) */
+#back {
+  font-family: 'IBM Plex Sans KR';
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  margin-top: -60px;
+  margin-left: -215px;
+  color: black;
+}
+
+#signupTbl {
+	margin-left:-60px;
+	margin-top: -50px;
+}
+
+/* 회원정보 수정/삭제*/
+#updateMemberBtn {
+	border:none;
+    border-radius: 50px;
+    width: 100px;
+    height: 30px;
+    font-family: 'IBM Plex Sans KR';
+    background-color: rgb(213, 56, 56);
+    color:white;
+    margin-left: -80px;
+}
+
+#updateMemberBtn:hover {
+    background-color: rgb(168, 43, 43);
+}
+
+#deleteMemberBtn {
+	border:none;
+    border-radius: 50px;
+    width: 100px;
+    height: 30px;
+    font-family: 'IBM Plex Sans KR';
+    background-color: rgb(213, 56, 56);
+    color:white;
+    margin-left: -100px;
+}
+
+
+#deleteMemberBtn:hover {
+  background-color: rgb(168, 43, 43);
+}
+
+/* 업로드 폴더 */
+#uploadFolder {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: #5a1308;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(213, 56, 56);
+  color: white;
+  font-family: 'IBM Plex Sans KR';
+}
+
+#uploadFolder:hover {
+  background-color: rgb(189, 49, 49);
+}
+
+#photo {
+	margin-left: 80px;
+}
+
+/* 회원 정보 */
+table #signupTbl {
+ 
+}
+
+table #signupTbl input{
+  margin-bottom: 10px;
+  margin-left:80px;
+  border-style: solid;
+  border-radius: 10px;
+  width: 250px;
+  height: 30px;
+  background-color: rgb(249, 249, 249);
+}
+
+/* 비밀번호 일치/불일치 */
+#pwCheckMessage {
+  font-family: 'IBM Plex Sans KR';
+  font-size: 13px;
+  color: red;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+label{
+	display:none;
+}

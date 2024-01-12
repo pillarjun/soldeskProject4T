@@ -1,0 +1,198 @@
+/* 배경 설정 */
+body {
+    background-image: url('../../img/signLoginImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 하얀 배경 */
+.whiteBack {
+    width: 600px;
+    height: 800px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin-top: 100px;
+    margin-bottom : 100px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-left: 50%;
+}
+
+
+/* signupTbl */
+#signupTbl {
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-left: 210px;
+    margin-bottom:-100px;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    z-index: 2;
+    text-align: left;
+    padding: 20px;
+}
+#signupTblBtn{
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-left: 110px;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.member-signupTbl {
+    margin: 10px;
+    display: center;
+}
+
+a#back {
+    font-family: 'IBM Plex Sans KR';
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 80px;
+    margin-left: -250px;
+    color: black;
+    position: absolute;
+}
+
+.signTblInput, .fileBox  input{
+    margin-bottom: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+    margin-left: -60px;
+}
+#userEmail1{
+    margin-bottom: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 135px;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+    margin-left: -60px;
+}
+#mailCheckInput{
+    margin-bottom: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 135px;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+    margin-left: -260px;
+}
+
+body .signupBody p {
+	margin-top: -3px;
+	margin-bottom: -3px;
+}
+
+/* 이메일 주소 */
+#userEmail2 {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    height: 25px;
+    background-color: rgb(249, 249, 249);
+}
+
+/* 본인인증 버튼 */
+#mailCheckBtn {
+	border: none;
+	border-radius: 50px;
+	margin-top: -3px;
+    margin-bottom: 10px;
+    margin-left: -60px;
+    margin-right: -90px;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(213, 56, 56);
+    font-family: 'IBM Plex Sans KR';
+    font-size: 15px;
+    color: white;'
+}
+
+#mailCheckBtn:hover {
+    background-color: rgb(168, 43, 43);
+}
+
+/* 인증번호 6자리 */
+#mailCheckInput {
+	margin-left: 100px;
+	postion: absolute;
+}
+
+/* 파일명 */
+.uploadName {
+	margin-left: 5px;
+}
+
+#phototext {
+	display :none;
+}
+
+/* 파일 선택*/
+.fileBox #uploadPhoto{
+	border: 2px solid gray;
+	padding: 2px;
+}
+
+/* 회원가입하기 버튼 */
+.btn {
+    margin-top: 10px;
+    margin-left: -70px;
+}
+
+.pressButton {
+    position: absolute;
+    z-index: 2;
+    margin-top: -400px;
+    margin-left: 750px;
+}
+
+#signCheckBtn {
+	margin-left: -20px;
+}
+
+button.button {
+    display: block;
+    position: relative;
+    float: left;
+    width: 400px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: large;
+    border-radius: 5px;
+    transition: all 0.2s ;
+    border: none;
+  }
+  .btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  .btnRed {
+    background: rgb(213, 56, 56);
+  }
+  .btnRed.btnPush {
+    box-shadow: 0px 5px 0px 0px #5a1308;
+  }
+  .btnRed.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #5a1308;
+  }
+
+  

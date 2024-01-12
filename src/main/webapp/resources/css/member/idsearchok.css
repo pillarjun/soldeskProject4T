@@ -1,0 +1,82 @@
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+
+@font-face {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  src: url();
+}
+
+/* 배경 설정 */
+body {
+    background-image: url('../../img/signLoginImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 하얀 배경 */
+.whiteBack {
+    width: 600px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 0 auto;
+    margin-top: 100px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-left: 50%;
+}
+
+/* idsearchokTbl */
+#idsearchokTbl{
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-left: 165px;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    border-radius:15px;
+    width:100%;
+    
+}
+
+.whiteBack tr th{
+	padding:10px;
+	border-bottom: 3px solid gray;
+	font-family: 'IBM Plex Sans KR';
+	font-size: 20px;
+}
+
+.whiteBack tr td {
+	padding:10px;
+	border-bottom: 1px solid gray;
+	font-family: 'IBM Plex Sans KR';
+	font-size: 15px;
+}
+
+.whiteBack td:hover {
+	background-color: lightgray;
+}
+
+.member-loginTbl {
+    margin: 10px;
+    display: center;
+}
+
+a#back {
+    font-family: 'IBM Plex Sans KR';
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    margin-left: -250px;
+    color: black;
+    position: absolute;
+}
